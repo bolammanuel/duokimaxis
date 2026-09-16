@@ -3,17 +3,18 @@
 export const SITE_COPY = {
   brand: {
     name: "Duokim Axis",
-    tagline: "Creative Technology Company",
+    tagline: "Creative Technology, Brand Strategy & Digital Engineering",
     slogan: "Align. Amplify. Refine.",
     vision: "Build The Intelligence Layer For Organizational Growth",
     subSlogan: "Turning Organizational Problems Into Practical, Measurable Solutions.",
+    description: "An outcome-driven firm bridging strategic advisory, brand architecture, custom web applications, and intelligent workflow automation to accelerate organizational growth.",
   },
   
   hero: {
     badge: "Align. Amplify. Refine.",
     titlePrefix: "Transform Your Business Into",
     titleHighlight: "Measurable Growth",
-    subtitle: "We help organizations diagnose challenges, build strategy, and execute scalable digital solutions.",
+    subtitle: "We help organizations diagnose operational friction, formulate brand strategy, and build scalable digital solutions.",
     ctaPrimary: "Book a Call",
     ctaSecondary: "Get in Touch",
   },

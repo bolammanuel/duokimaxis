@@ -21,6 +21,7 @@ export const Footer: React.FC = () => {
                 DUOKIM<span className="text-[#FA4517]">AXIS</span>
               </span>
             </Link>
+            <p className="text-xs text-[#FA4517] font-semibold">{SITE_COPY.brand.tagline}</p>
             <p className="text-xs text-slate-500 font-medium">{SITE_COPY.brand.subSlogan}</p>
           </div>
 

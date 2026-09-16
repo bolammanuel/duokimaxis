@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "description": "Duokim Axis — Strategic Creative Technology & Digital Engineering firm. We build the intelligence layer for organizational growth through problem diagnosis, brand architecture, custom web applications, and automated growth systems.",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
