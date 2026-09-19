@@ -31,7 +31,7 @@ export const App: React.FC = () => {
 
       <Navbar onOpenPlanner={() => setPlannerOpen(true)} />
 
-      <main id="main-content" className="flex-grow" tabIndex={-1}>
+      <main id="main-content" className="grow" tabIndex={-1}>
         <Suspense fallback={
           <div className="min-h-[60vh] flex items-center justify-center">
             <div className="w-8 h-8 border-3 border-[#FA4517] border-t-transparent rounded-full animate-spin"></div>
