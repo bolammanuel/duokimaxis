@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { SITE_COPY } from '../data/copy';
 import { Send, Check } from 'lucide-react';
+import { FaqSection } from '../components/FaqSection';
 
 interface ContactProps {
   onOpenPlanner: () => void;
 }
 
-export const Contact: React.FC<ContactProps> = () => {
+export const Contact: React.FC<ContactProps> = ({ onOpenPlanner }) => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
@@ -97,6 +98,9 @@ export const Contact: React.FC<ContactProps> = () => {
           </div>
         )}
       </div>
+
+      {/* Frequently Asked Questions */}
+      <FaqSection onOpenPlanner={onOpenPlanner} />
 
     </div>
   );

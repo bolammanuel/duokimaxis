@@ -17,7 +17,7 @@ const REVIEWS: Review[] = [
     name: 'Dr. Amina Bello',
     role: 'Executive Director, Gender Rights & Inclusion Initiative',
     review: 'Duokim Axis diagnosed our exact operational friction. The Telegram AI platform brought our learning content to thousands of participants across 5 Nigerian languages with effortless voice interaction.',
-    avatar: '/assets/bento/visionary.png',
+    avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&q=80',
     rating: 5,
   },
   {
@@ -25,7 +25,7 @@ const REVIEWS: Review[] = [
     name: 'Tunde Olanrewaju',
     role: 'Managing Director, ANIC Ecosystem',
     review: 'Transforming three complex tech offerings into one cohesive brand system was seamless. Duokim Axis gave us complete clarity, brand architecture, and a market-ready position.',
-    avatar: '/assets/team/gideon.png',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
     rating: 5,
   },
   {
@@ -33,7 +33,7 @@ const REVIEWS: Review[] = [
     name: 'Chidi Nwachukwu',
     role: 'Head of Growth, West African SME Hub',
     review: 'Most agencies just sell logos and websites. Duokim Axis evaluated our business first, built the exact digital infrastructure we needed, and drove measurable outcomes.',
-    avatar: '/assets/team/emmanuel.png',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
     rating: 5,
   },
   {
@@ -124,6 +124,9 @@ export const CustomerReviewsMarquee: React.FC = () => {
                 <img
                   src={item.avatar}
                   alt={item.name}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80';
+                  }}
                   className="w-11 h-11 rounded-full object-cover border border-slate-200 shadow-sm"
                 />
                 <div className="space-y-0.5">

@@ -52,7 +52,7 @@ export const App: React.FC = () => {
         onClose={() => setPlannerOpen(false)}
       />
 
-      <Footer />
+      <Footer onOpenPlanner={() => setPlannerOpen(true)} />
 
     </div>
   );

@@ -11,7 +11,7 @@ export const SITE_COPY = {
   },
   
   hero: {
-    badge: "Align. Amplify. Refine.",
+    badge: "Creative Technology & Digital Engineering",
     titlePrefix: "Transform Your Business Into",
     titleHighlight: "Measurable Growth",
     subtitle: "We help organizations diagnose operational friction, formulate brand strategy, and build scalable digital solutions.",
@@ -90,5 +90,114 @@ export const SITE_COPY = {
     badge: "Contact",
     title: "Let's Build Together",
     subtitle: "Schedule a diagnostic consultation for your organization.",
+  },
+
+  faqs: {
+    badge: "FAQ",
+    title: "Frequently Asked Questions",
+    subtitle: "Get fast answers to common questions about our engagement process, diagnostic audit, and technical execution.",
+    items: [
+      {
+        question: "What makes Duokim Axis different from traditional agencies?",
+        answer: "We are a problem-first creative technology & digital engineering firm. Traditional agencies jump straight to design or development. We diagnose root operational friction across positioning, systems, and user experience first, ensuring every deliverable ties directly to measurable commercial impact."
+      },
+      {
+        question: "How long does a Diagnostic Audit take?",
+        answer: "Our 7-Dimension Diagnostic Audit typically takes 1 to 2 weeks. It delivers a comprehensive Problem Map, root-cause analysis, and a prioritized implementation roadmap for your leadership team."
+      },
+      {
+        question: "Can we hire Duokim Axis for custom web application development?",
+        answer: "Yes. We build high-performance, accessible, production-ready web applications, workflow automation tools, and brand communication systems tailored specifically to your organizational workflow."
+      },
+      {
+        question: "How do your monthly retainer engagements work?",
+        answer: "Our strategic retainers provide ongoing leadership, platform management, digital optimization, and continuous updates so your digital infrastructure evolves as your business grows."
+      },
+      {
+        question: "Do you build custom AI and automation tools?",
+        answer: "Yes. From Telegram/WhatsApp automated learning tools to workflow automation, custom APIs, and analytics dashboards, we deploy practical technology solutions that eliminate operational friction."
+      },
+      {
+        question: "How do we get started with Duokim Axis?",
+        answer: "Click 'Book a Call' to schedule a diagnostic consultation. We discuss your business objectives, review current challenges, and determine the optimal engagement path for your team."
+      }
+    ]
+  },
+
+  pricing: {
+    badge: "Pricing Plans",
+    title: "Flexible Engagement Models for Organizational Growth",
+    subtitle: "Transparent engagement packages designed for businesses at every growth stage.",
+    tiers: [
+      {
+        id: "starter-audit",
+        name: "Diagnostic Audit",
+        category: "Diagnostic",
+        tagline: "For organizations needing clarity on growth bottlenecks.",
+        price: "₦2,500,000",
+        period: "one-time",
+        features: [
+          "7-Dimension Diagnostic Assessment",
+          "Operational Problem Map & Diagnosis",
+          "Executive Implementation Roadmap",
+          "Positioning & Brand Communication Audit",
+          "60-Min Leadership Strategy Debrief"
+        ],
+        ctaText: "Book Diagnostic Audit",
+        isPopular: false
+      },
+      {
+        id: "growth-implementation",
+        name: "Growth Systems",
+        category: "Implementation",
+        tagline: "For scaling businesses building high-performance web apps & brand systems.",
+        price: "₦7,500,000",
+        period: "per project",
+        features: [
+          "Complete Brand Architecture & Strategy",
+          "Custom Web Application Development",
+          "Workflow & System Automation",
+          "Accessibility & WCAG 2.1 Compliance",
+          "Analytics & Performance Tracking",
+          "30 Days Dedicated Post-Launch Support"
+        ],
+        ctaText: "Get Started",
+        isPopular: true
+      },
+      {
+        id: "scale-retainer",
+        name: "Scale Retainer",
+        category: "Retainer",
+        tagline: "For growing organizations requiring continuous strategic & technical partnership.",
+        price: "₦4,000,000",
+        period: "per month",
+        features: [
+          "Dedicated Strategic Advisory",
+          "Continuous System & Code Updates",
+          "Custom Feature Development",
+          "Channel & Platform Management",
+          "Bi-Weekly Executive Reviews"
+        ],
+        ctaText: "Start Retainer",
+        isPopular: false
+      },
+      {
+        id: "enterprise-custom",
+        name: "Enterprise Custom",
+        category: "Enterprise",
+        tagline: "For large organizations with complex digital infrastructure needs.",
+        price: "Custom",
+        period: "tailored scope",
+        features: [
+          "Multi-Platform Digital Transformation",
+          "Dedicated Technical Architecture Team",
+          "Custom AI & Automation Infrastructure",
+          "SLA & Priority Emergency Support",
+          "On-Premise or Private Cloud Deployment"
+        ],
+        ctaText: "Contact Enterprise",
+        isPopular: false
+      }
+    ]
   }
 };

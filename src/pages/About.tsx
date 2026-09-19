@@ -43,9 +43,9 @@ export const About: React.FC<AboutProps> = ({ onOpenPlanner }) => {
         </motion.p>
       </div>
 
-      {/* 🚀 THE VISION SECTION (Light Card, Brand Orange Heading & Zero Heavy Drop Shadows) */}
+      {/* 🚀 THE VISION SECTION */}
       <AnimatedContainer delay={0.25} scale={true}>
-        <div className="bg-[#F8FAFC] p-8 sm:p-12 rounded-[2.5rem] border border-slate-200/90 relative overflow-hidden">
+        <div className="bg-slate-50 p-8 sm:p-12 rounded-[2.5rem] border border-slate-200 relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             {/* Text Column */}
             <div className="lg:col-span-8 space-y-6">
@@ -68,26 +68,23 @@ export const About: React.FC<AboutProps> = ({ onOpenPlanner }) => {
               </div>
             </div>
 
-            {/* Visual Graphic Cubes Stack (Matching Deck Light Illustration) */}
-            <div className="lg:col-span-4 flex items-center justify-center pt-4 lg:pt-0">
-              <div className="relative w-44 h-44 flex items-center justify-center">
-                <motion.div 
-                  animate={{ y: [0, -6, 0], rotate: [6, 9, 6] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="w-28 h-28 bg-[#84CC16] rounded-2xl transform rotate-6 absolute top-1 right-2 border border-white shadow-sm"
-                />
-                <motion.div 
-                  animate={{ y: [0, 6, 0], rotate: [-9, -6, -9] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                  className="w-28 h-28 bg-[#0D9488] rounded-2xl transform -rotate-12 absolute bottom-1 left-2 border border-white shadow-sm"
-                />
+            {/* Visual Clean Pillar Illustration */}
+            <div className="lg:col-span-4 flex items-center justify-center pt-4 lg:pt-0" aria-hidden="true">
+              <div className="w-40 h-40 rounded-3xl bg-white border border-slate-200 p-6 flex flex-col items-center justify-center gap-3 shadow-xs">
+                <div className="w-14 h-14 rounded-2xl bg-[#0D1C23] flex items-center justify-center p-2.5 shadow-sm">
+                  <svg width="32" height="32" viewBox="0 0 384 476" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 28.8349C0 15.12 11.1005 4.00195 24.7936 4.00195H358.681C372.375 4.00195 383.475 15.1201 383.475 28.8349V376.496C383.475 431.355 339.073 475.828 284.301 475.828H99.1746C44.402 475.828 0 431.355 0 376.496V28.8349Z" fill="#0D1C23"/>
+                    <path d="M300.003 98.5901L0 239.434V98.5901V0H383.475V80.985V257.039L151.798 334.502C150.02 335.097 150.447 337.728 152.321 337.728H351.481C364.901 337.728 372.728 352.9 364.963 363.863L300.426 454.969C293.507 464.737 280.614 468.166 269.768 463.125L24.2709 349.01C13.1225 343.828 11.3195 328.705 20.9363 321.039L300.003 98.5901Z" fill="#FA4517"/>
+                  </svg>
+                </div>
+                <span className="text-xs font-heading font-extrabold text-slate-900 tracking-tight text-center">Align. Amplify. Refine.</span>
               </div>
             </div>
           </div>
         </div>
       </AnimatedContainer>
 
-      {/* 7 Diagnostic Areas (EQUAL SIZE CARDS) */}
+      {/* 7 Diagnostic Areas */}
       <div className="space-y-6">
         <AnimatedContainer delay={0.1} className="text-center space-y-1">
           <h2 className="font-heading font-extrabold text-2xl text-slate-900">7 Assessment Areas</h2>
@@ -97,7 +94,7 @@ export const About: React.FC<AboutProps> = ({ onOpenPlanner }) => {
         <StaggerParent staggerDelay={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
           {SITE_COPY.assessmentAreas.areas.map((area, idx) => (
             <StaggerChild key={idx} className="h-full">
-              <div className="p-6 rounded-3xl glass-card-light space-y-3 h-full min-h-[140px] flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+              <div className="p-6 rounded-3xl card-clean space-y-3 h-full min-h-[140px] flex flex-col justify-between">
                 <div className="space-y-1">
                   <span className="font-mono text-xs text-[#FA4517] font-extrabold">0{idx + 1}.</span>
                   <h3 className="font-heading font-bold text-sm text-slate-900 leading-snug">{area.name}</h3>
@@ -109,20 +106,20 @@ export const About: React.FC<AboutProps> = ({ onOpenPlanner }) => {
         </StaggerParent>
       </div>
 
-      {/* Team Profiles (Equal Height & Responsive Alignment) */}
+      {/* The Lead Team */}
       <div className="space-y-6">
         <AnimatedContainer delay={0.1} className="text-center space-y-1">
-          <h2 className="font-heading font-extrabold text-2xl text-slate-900">Founding Leadership</h2>
-          <p className="text-xs text-slate-600">Experienced leadership driving strategy, technology, and organizational growth.</p>
+          <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">The Lead Team</h2>
+          <p className="text-xs sm:text-sm text-slate-600 font-medium">Experienced leadership driving strategy, creative direction, technology, and communications.</p>
         </AnimatedContainer>
 
-        <StaggerParent staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto items-stretch">
+        <StaggerParent staggerDelay={0.12} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto items-stretch">
           {TEAM_MEMBERS.map((member) => (
             <StaggerChild key={member.id} className="h-full">
-              <div className="glass-card-light rounded-3xl p-6 sm:p-7 flex items-center gap-4 sm:gap-5 h-full hover:-translate-y-1 transition-transform duration-300">
-                <img src={member.avatar} alt={member.name} className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex-shrink-0 object-cover border border-slate-200 shadow-sm" />
+              <div className="card-clean rounded-3xl p-6 sm:p-7 flex items-center gap-4 sm:gap-5 h-full">
+                <img src={member.avatar} alt={`Portrait of ${member.name}, ${member.role}`} className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex-shrink-0 object-cover border border-slate-200 shadow-xs" />
                 <div className="space-y-1 flex-grow">
-                  <h3 className="font-heading font-bold text-lg text-slate-900">{member.name}</h3>
+                  <h3 className="font-heading font-bold text-base sm:text-lg text-slate-900">{member.name}</h3>
                   <p className="text-xs font-bold text-[#FA4517] leading-snug">{member.role}</p>
                   <p className="text-xs text-slate-600 leading-relaxed">{member.bio}</p>
                 </div>
@@ -134,15 +131,16 @@ export const About: React.FC<AboutProps> = ({ onOpenPlanner }) => {
 
       {/* CTA */}
       <AnimatedContainer delay={0.2} scale={true}>
-        <div className="p-8 rounded-3xl glass-card-light text-center space-y-3">
-          <h3 className="font-heading font-bold text-xl text-slate-900">Schedule Your Diagnostic Audit</h3>
-          <p className="text-xs text-slate-600">Discover what is holding your business back and map your next steps.</p>
+        <div className="p-8 sm:p-10 rounded-3xl bg-slate-900 text-white text-center space-y-4 shadow-sm">
+          <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-white">Schedule Your Diagnostic Audit</h3>
+          <p className="text-xs text-slate-300 max-w-md mx-auto">Discover what is holding your business back and map your implementation steps.</p>
           <button
             onClick={onOpenPlanner}
-            className="group px-6 py-3 rounded-full bg-[#FA4517] text-white text-xs font-bold hover:bg-[#FF6B35] hover:scale-105 active:scale-95 transition-all inline-flex items-center gap-1.5 shadow-md shadow-[#FA4517]/20"
+            className="group px-6 py-3 rounded-full bg-[#FA4517] text-white text-xs font-bold hover:bg-[#FF6B35] transition-all inline-flex items-center gap-1.5 shadow-md shadow-[#FA4517]/20 focus-visible:ring-2 focus-visible:ring-white focus:outline-none"
+            aria-label="Book a call to schedule a diagnostic audit"
           >
             <span>Book a Call</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" aria-hidden="true" />
           </button>
         </div>
       </AnimatedContainer>

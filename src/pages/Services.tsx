@@ -59,14 +59,13 @@ export const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
             </p>
           </div>
 
-          {/* Deliverables Grid with Red/Orange Indicator Dots */}
+          {/* Deliverables Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 pt-1">
             {SITE_COPY.whatWeDeliver.deliverables.map((item, idx) => (
               <div 
                 key={idx}
-                className="p-4 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 hover:border-[#FA4517]/50 hover:bg-white transition-all duration-300 flex items-center gap-3.5 group shadow-2xs"
+                className="p-4 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 hover:border-[#FA4517] hover:bg-white transition-all duration-300 flex items-center gap-3 group shadow-2xs"
               >
-                <div className="w-3.5 h-3.5 rounded-full bg-[#FA4517] flex-shrink-0 group-hover:scale-125 transition-transform" />
                 <span className="font-heading font-bold text-xs sm:text-sm text-slate-900">
                   {item}
                 </span>

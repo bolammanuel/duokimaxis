@@ -13,9 +13,11 @@ export const ProjectPlannerModal: React.FC<ProjectPlannerModalProps> = ({ isOpen
   const [contactInfo, setContactInfo] = useState({ name: '', email: '', message: '' });
   const modalRef = useRef<HTMLDivElement>(null);
 
-  // Keyboard accessibility: Escape key listener & focus management
+  // Keyboard accessibility & Body scroll locking
   useEffect(() => {
     if (!isOpen) return;
+
+    document.body.style.overflow = 'hidden';
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -34,6 +36,7 @@ export const ProjectPlannerModal: React.FC<ProjectPlannerModalProps> = ({ isOpen
     }, 50);
 
     return () => {
+      document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
       clearTimeout(timeout);
     };
@@ -74,7 +77,7 @@ export const ProjectPlannerModal: React.FC<ProjectPlannerModalProps> = ({ isOpen
               <h2 id="planner-modal-title" className="font-heading font-extrabold text-2xl text-slate-900 tracking-tight">
                 Book a Consultation
               </h2>
-              <p className="text-xs text-slate-600 font-medium">Select a service area to schedule your diagnostic audit.</p>
+              <p className="text-xs text-slate-600 font-medium">Schedule a 1-on-1 diagnostic evaluation for your organization.</p>
             </div>
 
             <div className="space-y-2">

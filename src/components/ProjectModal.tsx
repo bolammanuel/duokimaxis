@@ -15,6 +15,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
   useEffect(() => {
     if (!project) return;
 
+    document.body.style.overflow = 'hidden';
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
@@ -30,6 +32,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
     }, 50);
 
     return () => {
+      document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
       clearTimeout(timeout);
     };

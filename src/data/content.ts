@@ -98,18 +98,34 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 'gideon',
     name: 'Gideon',
-    role: 'Strategy • Creative • Business Leadership',
-    bio: 'Directing strategic advisory, brand architecture, positioning, and growth frameworks.',
-    avatar: '/assets/team/gideon.png',
-    expertise: ['Strategy', 'Positioning', 'Creative Direction']
+    role: 'Strategic Creative Architect / Insight & Research Strategist',
+    bio: 'Leads research, discovery, problem diagnosis, and strategic brand architecture.',
+    avatar: '/assets/team/Gideon.avif',
+    expertise: ['Insight & Research', 'Brand Strategy', 'Creative Architecture']
   },
   {
     id: 'emmanuel',
     name: 'Emmanuel',
-    role: 'Technology • Systems • Product Development',
-    bio: 'Engineering digital platforms, automated pipelines, and scalable technical architecture.',
-    avatar: '/assets/team/emmanuel.png',
-    expertise: ['Technology', 'Systems', 'Product Development']
+    role: 'IT Support / Creative Technology Engineer',
+    bio: 'Digital products, websites, technology, AI, automation, and intelligent workflows.',
+    avatar: '/assets/team/Emmanuel.avif',
+    expertise: ['Digital Products', 'Websites & Tech', 'AI & Automation']
+  },
+  {
+    id: 'anu',
+    name: 'Anuoluwapo',
+    role: 'Digital Communications Strategist',
+    bio: 'Content, social media strategy, and community engagement.',
+    avatar: '/assets/team/Anu.avif',
+    expertise: ['Communications', 'Content Strategy', 'Community']
+  },
+  {
+    id: 'marvellous',
+    name: 'Marvellous',
+    role: 'Motion Architecture Lead',
+    bio: 'Designs movement, interaction, and visual systems that make experiences engaging.',
+    avatar: '/assets/team/Marvellous.avif',
+    expertise: ['Motion Architecture', 'Interaction Design', 'Visual Systems']
   }
 ];
 
