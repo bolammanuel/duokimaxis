@@ -15,9 +15,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPlanner }) => {
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-[#0D1C23] to-slate-900 border border-slate-800 p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl w-full">
           <div className="absolute top-0 right-0 -mt-8 -mr-8 w-48 h-48 bg-[#FA4517]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="space-y-2 text-center md:text-left z-10 min-w-0 max-w-full">
-            <span className="px-3 py-1 rounded-full bg-[#FA4517]/20 text-[#FA4517] text-xs font-mono font-bold uppercase tracking-wider">
-              Get Started
-            </span>
             <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-white tracking-tight">
               Ready to eliminate operational friction?
             </h3>

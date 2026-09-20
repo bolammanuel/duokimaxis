@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useAnimationControls } from 'framer-motion';
 import { SITE_COPY } from '../data/copy';
 import { SERVICES_DATA, TEAM_MEMBERS } from '../data/content';
 import { FeaturesOrbitalCanvas } from '../components/FeaturesOrbitalCanvas';
@@ -13,46 +13,169 @@ import { CustomerReviewsMarquee } from '../components/CustomerReviewsMarquee';
 import { AnimatedContainer, StaggerParent, StaggerChild } from '../components/AnimatedContainer';
 import { Project } from '../types';
 import { 
-  ArrowUpRight, ArrowRight, ChevronRight, Search, Code, Layers
+  ArrowUpRight, ArrowRight, ChevronRight, Search, Code, Layers, Sparkles, RotateCcw
 } from 'lucide-react';
 
 interface HomeProps {
   onOpenPlanner: () => void;
 }
 
+// Lightweight Paper Physics Pill Component
+interface PaperPillProps {
+  name: string;
+  idx: number;
+  containerRef: React.RefObject<HTMLDivElement | null>;
+}
+
+const PaperPill: React.FC<PaperPillProps> = ({ name, idx, containerRef }) => {
+  const controls = useAnimationControls();
+
+  useEffect(() => {
+    // Initial paper fall into place on load
+    controls.start({
+      opacity: 1,
+      y: 0,
+      x: 0,
+      rotate: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 65,
+        damping: 11,
+        mass: 0.5,
+        delay: 0.15 + idx * 0.07
+      }
+    });
+  }, [controls, idx]);
+
+  const handleDragEnd = (_: any, info: any) => {
+    // Determine flutter sway direction based on horizontal movement
+    const swingDirection = info.offset.x >= 0 ? 1 : -1;
+    
+    // Fluttering lightweight paper floating gently back down to baseline (x: 0, y: 0)
+    controls.start({
+      x: 0,
+      y: 0,
+      rotate: [swingDirection * 12, swingDirection * -6, 0],
+      transition: {
+        type: 'spring',
+        stiffness: 38,   // Floating paper spring
+        damping: 12,     // Air friction damping
+        mass: 0.35,      // Extremely light paper weight
+        bounce: 0.25
+      }
+    });
+  };
+
+  return (
+    <motion.div
+      drag
+      dragConstraints={containerRef}
+      dragElastic={0.8}
+      dragMomentum={true}
+      dragTransition={{ power: 0.35, timeConstant: 300 }}
+      animate={controls}
+      initial={{ opacity: 0, y: -240, rotate: idx % 2 === 0 ? -12 : 12 }}
+      onDragEnd={handleDragEnd}
+      whileHover={{ 
+        scale: 1.06, 
+        rotate: idx % 2 === 0 ? 3 : -3,
+        borderColor: '#FA4517', 
+        color: '#FA4517' 
+      }}
+      whileDrag={{ 
+        scale: 1.12, 
+        rotate: idx % 2 === 0 ? [ -4, 6, -3 ] : [ 4, -6, 3 ],
+        zIndex: 60, 
+        cursor: 'grabbing', 
+        boxShadow: '0 18px 36px -6px rgba(250, 69, 23, 0.28)' 
+      }}
+      className="px-5 py-2.5 rounded-full bg-white border border-slate-200 shadow-xs text-slate-800 text-xs font-bold cursor-grab select-none touch-none transition-colors active:border-[#FA4517] min-h-[44px] flex items-center justify-center pointer-events-auto"
+    >
+      <span>{name}</span>
+    </motion.div>
+  );
+};
+
 export const Home: React.FC<HomeProps> = ({ onOpenPlanner }) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeServiceId, setActiveServiceId] = useState<string>(SERVICES_DATA[0].id);
+  const [resetKey, setResetKey] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   // Animated Word Rotator State
-  const animatedWords = ["Measurable Growth", "Digital Solutions", "Practical Outcomes"];
+  const rotatorItems = SITE_COPY.hero.rotatorItems;
   const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % animatedWords.length);
+      setWordIndex((prev) => (prev + 1) % rotatorItems.length);
     }, 3200);
     return () => clearInterval(interval);
-  }, [animatedWords.length]);
+  }, [rotatorItems.length]);
 
   return (
     <div className="space-y-24 sm:space-y-28 pb-24">
       
       {/* 🚀 HERO SECTION */}
-      <section aria-labelledby="hero-heading" className="relative pt-44 sm:pt-48 pb-16 px-4 sm:px-6 overflow-hidden">
+      <section ref={heroRef} aria-labelledby="hero-heading" className="relative pt-36 sm:pt-44 pb-16 px-4 sm:px-6 overflow-hidden">
         
-        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-10 sm:space-y-12">
+        {/* Animated Background Glowing Orbs */}
+        <div aria-hidden="true" className="absolute inset-0 pointer-events-none overflow-hidden">
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              x: [0, 20, 0],
+              y: [0, -15, 0]
+            }} 
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} 
+            className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-gradient-to-tr from-[#FA4517]/15 via-orange-400/10 to-transparent rounded-full blur-3xl" 
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.15, 1],
+              x: [0, -25, 0]
+            }} 
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }} 
+            className="absolute top-1/4 right-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl" 
+          />
+          <div className="absolute inset-0 bg-[radial-gradient(#E2E8F0_1px,transparent_1px)] [background-size:32px_32px] opacity-40" />
+        </div>
+
+        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-8 sm:space-y-10">
           
-          {/* Main Headline with Accent Highlight */}
+          {/* Eyebrow Badge (Dot removed as requested) */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-xs text-slate-800 text-xs font-bold"
+          >
+            <span>{SITE_COPY.hero.badge}</span>
+          </motion.div>
+
+          {/* Main Headline with Solid Brand Orange Animated Text Swap */}
           <motion.h1
             id="hero-heading"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, delay: 0.05 }}
-            className="font-heading font-black text-4xl sm:text-6xl text-slate-900 leading-[1.15]"
+            className="font-heading font-black text-3xl sm:text-5xl md:text-6xl text-slate-900 leading-[1.15] tracking-tight"
           >
-            Solving your organizational problems, <br className="hidden sm:inline" />
-            <span className="text-[#FA4517]">one solution</span> at a time.
+            {SITE_COPY.hero.titleMain} <br className="hidden sm:inline" />
+            <span className="relative inline-block min-h-[1.2em] text-[#FA4517]">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={wordIndex}
+                  initial={{ opacity: 0, y: 14, filter: 'blur(3px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, y: -14, filter: 'blur(3px)' }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
+                  className="inline-block text-[#FA4517] font-black"
+                >
+                  {rotatorItems[wordIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -74,7 +197,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenPlanner }) => {
           >
             <button
               onClick={onOpenPlanner}
-              className="group w-full sm:w-auto px-8 py-4 rounded-full bg-[#FA4517] text-white font-heading font-bold text-xs hover:bg-[#FF6B35] transition-all flex items-center justify-center gap-2 shadow-sm focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none"
+              className="group w-full sm:w-auto px-8 py-4 rounded-full bg-[#FA4517] text-white font-heading font-bold text-xs hover:bg-[#FF6B35] transition-all flex items-center justify-center gap-2 shadow-md shadow-[#FA4517]/25 focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none cursor-pointer"
               aria-label="Book a call with Duokim Axis"
             >
               <span>{SITE_COPY.hero.ctaPrimary}</span>
@@ -91,31 +214,27 @@ export const Home: React.FC<HomeProps> = ({ onOpenPlanner }) => {
             </Link>
           </motion.div>
 
-          {/* Horizontal Feature Pill Bar (Bumpa Inspired) */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="pt-10 flex flex-wrap items-center justify-center gap-3 text-xs font-bold text-slate-700"
-            aria-label="Core services"
-          >
-            {[
-              "Diagnostic Audit",
-              "Brand Architecture",
-              "Digital Systems",
-              "Workflow Automation",
-              "Customer Experience",
-              "Growth Analytics",
-              "Tech Infrastructure"
-            ].map((featurePill, idx) => (
-              <span 
-                key={idx} 
-                className="px-4 py-2 rounded-full bg-white border border-slate-200 shadow-xs text-slate-700 font-bold"
-              >
-                <span>{featurePill}</span>
-              </span>
-            ))}
-          </motion.div>
+          {/* 🌊 KINETIC WATERFALL / LIGHTWEIGHT PAPER PHYSICS PILLS */}
+          <div className="pt-8 relative z-20">
+            <div key={resetKey} className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 max-w-3xl mx-auto px-2">
+              {[
+                { name: "Diagnostic Audit" },
+                { name: "Brand Architecture" },
+                { name: "Digital Systems" },
+                { name: "Workflow Automation" },
+                { name: "Customer Experience" },
+                { name: "Growth Analytics" },
+                { name: "Tech Infrastructure" }
+              ].map((pill, idx) => (
+                <PaperPill
+                  key={`${pill.name}-${resetKey}`}
+                  name={pill.name}
+                  idx={idx}
+                  containerRef={heroRef}
+                />
+              ))}
+            </div>
+          </div>
 
         </div>
       </section>

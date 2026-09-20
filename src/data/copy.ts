@@ -12,9 +12,14 @@ export const SITE_COPY = {
   
   hero: {
     badge: "Creative Technology & Digital Engineering",
-    titlePrefix: "Transform Your Business Into",
-    titleHighlight: "Measurable Growth",
-    subtitle: "We help organizations diagnose operational friction, formulate brand strategy, and build scalable digital solutions.",
+    titleMain: "We build high-performance",
+    rotatorItems: [
+      "custom web applications.",
+      "strategic brand systems.",
+      "automated workflows.",
+      "digital infrastructure."
+    ],
+    subtitle: "We diagnose root operational bottlenecks and build the custom digital solutions your organization needs to scale.",
     ctaPrimary: "Book a Call",
     ctaSecondary: "Get in Touch",
   },
