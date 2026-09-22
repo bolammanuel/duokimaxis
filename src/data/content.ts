@@ -159,22 +159,25 @@ export const SCOPE_OPTIONS: ScopeOption[] = [
   {
     id: 'diagnostic-audit',
     name: 'Diagnostic Audit Assessment',
-    basePrice: 2500,
     timeframe: '1-2 Weeks',
     description: '7-dimension audit delivering a clear Problem Map and Execution Plan.'
   },
   {
     id: 'implementation-project',
     name: 'Implementation Project',
-    basePrice: 7500,
     timeframe: '4-6 Weeks',
     description: 'End-to-end execution of strategy, web platforms, and brand systems.'
   },
   {
     id: 'retainer-advisory',
     name: 'Monthly Retainer Services',
-    basePrice: 4000,
-    timeframe: 'Monthly',
+    timeframe: 'Ongoing Monthly',
     description: 'Continuous strategic advisory, digital management, and optimization.'
+  },
+  {
+    id: 'enterprise-custom',
+    name: 'Enterprise Transformation',
+    timeframe: 'Tailored Scope',
+    description: 'Multi-platform digital infrastructure and dedicated architecture team.'
   }
 ];

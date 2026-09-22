@@ -370,15 +370,8 @@ export const Home: React.FC<HomeProps> = ({ onOpenPlanner }) => {
                         transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
                         className="overflow-hidden"
                       >
-                        <div className="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-600 space-y-2">
+                        <div className="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-600">
                           <p>{service.fullDesc}</p>
-                          <div className="flex flex-wrap gap-2 pt-1">
-                            {service.deliverables.map((d, i) => (
-                              <span key={i} className="px-2.5 py-1 rounded bg-slate-100 text-slate-800 text-[11px] font-mono font-medium">
-                                ✓ {d}
-                              </span>
-                            ))}
-                          </div>
                         </div>
                       </motion.div>
                     )}

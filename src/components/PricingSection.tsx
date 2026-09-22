@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Check, ArrowRight } from 'lucide-react';
 import { SITE_COPY } from '../data/copy';
 import { AnimatedContainer, StaggerParent, StaggerChild } from './AnimatedContainer';
@@ -8,13 +8,6 @@ interface PricingSectionProps {
 }
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenPlanner }) => {
-  const [selectedCategory, setSelectedCategory] = useState<'All' | 'Diagnostic' | 'Implementation' | 'Retainer'>('All');
-
-  const filteredTiers = SITE_COPY.pricing.tiers.filter((tier) => {
-    if (selectedCategory === 'All') return true;
-    return tier.category === selectedCategory;
-  });
-
   return (
     <section aria-labelledby="pricing-heading" className="bg-[#0F172A] text-white py-16 sm:py-20 px-4 sm:px-6 rounded-3xl sm:rounded-[2.5rem] max-w-6xl mx-auto my-12 overflow-hidden">
       <div className="space-y-12">
@@ -28,39 +21,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenPlanner })
           <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-medium">
             {SITE_COPY.pricing.subtitle}
           </p>
-
-          {/* Category Filter Toggle Tabs (Bumpa Style) */}
-          <div className="w-full flex justify-center py-1 px-2">
-            <div 
-              role="tablist" 
-              aria-label="Pricing filter categories" 
-              className="grid grid-cols-2 sm:flex sm:inline-flex items-center p-1.5 rounded-2xl bg-slate-900 border border-slate-800 gap-1.5 mt-2 w-full sm:w-auto max-w-md sm:max-w-full"
-            >
-              {(['All', 'Diagnostic', 'Implementation', 'Retainer'] as const).map((cat) => {
-                const isActive = selectedCategory === cat;
-                return (
-                  <button
-                    key={cat}
-                    role="tab"
-                    aria-selected={isActive}
-                    onClick={() => setSelectedCategory(cat)}
-                    className={`px-3 py-2 rounded-xl text-xs font-bold transition-all text-center focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none ${
-                      isActive
-                        ? 'bg-[#FA4517] text-white shadow-sm'
-                        : 'text-slate-400 hover:text-white hover:bg-slate-800'
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
         </AnimatedContainer>
 
-        {/* Pricing Cards Grid (High-Contrast Bumpa Style) */}
+        {/* Pricing Cards Grid (All 4 Tiers Displayed) */}
         <StaggerParent staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-          {filteredTiers.map((tier) => (
+          {SITE_COPY.pricing.tiers.map((tier) => (
             <StaggerChild key={tier.id} className="h-full">
               <div 
                 className={`rounded-3xl p-6 flex flex-col justify-between h-full border transition-all ${
@@ -87,13 +52,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenPlanner })
                     <p className="text-xs text-slate-400 leading-normal min-h-[36px]">{tier.tagline}</p>
                   </div>
 
-                  {/* Price */}
+                  {/* Timeframe & Engagement Model (Bright White Text) */}
                   <div className="pt-3 pb-1 border-t border-slate-800 space-y-1">
-                    <div className="font-heading font-black text-2xl sm:text-3xl text-white tracking-tight leading-none">
-                      {tier.price}
+                    <div className="font-heading font-black text-xl sm:text-2xl text-white tracking-tight leading-none">
+                      {tier.timeframe}
                     </div>
                     <div className="text-[11px] sm:text-xs text-slate-400 font-mono font-medium">
-                      / {tier.period}
+                      Custom Proposal &bull; {tier.period}
                     </div>
                   </div>
 

@@ -64,7 +64,18 @@ export interface LabExperiment {
 export interface ScopeOption {
   id: string;
   name: string;
-  basePrice: number;
   timeframe: string;
   description: string;
+}
+
+export interface PricingTier {
+  id: string;
+  name: string;
+  category: 'Diagnostic' | 'Implementation' | 'Retainer' | 'Enterprise';
+  tagline: string;
+  timeframe: string;
+  period: string;
+  features: string[];
+  ctaText: string;
+  isPopular?: boolean;
 }
