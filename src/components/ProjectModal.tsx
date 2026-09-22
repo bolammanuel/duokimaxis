@@ -87,7 +87,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
 
             {/* Solution Visual Screenshot */}
             <div className="my-6 rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-950">
-              <img src={project.image} alt={project.title} loading="lazy" decoding="async" className="w-full max-h-[380px] object-cover object-top" />
+              <img src={project.image} alt={project.title} loading="lazy" decoding="async" className="w-full max-h-95 object-cover object-top" />
             </div>
 
             {/* Metrics Strip */}
@@ -103,12 +103,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
             {/* Challenge & Solution details */}
             <div className="space-y-5 my-6 text-xs sm:text-sm text-slate-600 leading-relaxed">
               <div className="p-4 rounded-xl bg-red-500/5 border border-red-500/10 space-y-1">
-                <h3 className="font-heading font-bold text-slate-900 text-xs uppercase tracking-wider text-red-600">The Friction / Challenge</h3>
+                <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-red-600">The Friction / Challenge</h3>
                 <p>{project.challenge}</p>
               </div>
 
               <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10 space-y-1">
-                <h3 className="font-heading font-bold text-slate-900 text-xs uppercase tracking-wider text-emerald-600">The Solution Delivered</h3>
+                <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-emerald-600">The Solution Delivered</h3>
                 <p>{project.solution}</p>
               </div>
 

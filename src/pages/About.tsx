@@ -94,7 +94,7 @@ export const About: React.FC<AboutProps> = ({ onOpenPlanner }) => {
         <StaggerParent staggerDelay={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
           {SITE_COPY.assessmentAreas.areas.map((area, idx) => (
             <StaggerChild key={idx} className="h-full">
-              <div className="p-6 rounded-3xl card-clean space-y-3 h-full min-h-[140px] flex flex-col justify-between">
+              <div className="p-6 rounded-3xl card-clean space-y-3 h-full min-h-35 flex flex-col justify-between">
                 <div className="space-y-1">
                   <span className="font-mono text-xs text-[#FA4517] font-extrabold">0{idx + 1}.</span>
                   <h3 className="font-heading font-bold text-sm text-slate-900 leading-snug">{area.name}</h3>
@@ -117,8 +117,8 @@ export const About: React.FC<AboutProps> = ({ onOpenPlanner }) => {
           {TEAM_MEMBERS.map((member) => (
             <StaggerChild key={member.id} className="h-full">
               <div className="card-clean rounded-3xl p-6 sm:p-7 flex items-center gap-4 sm:gap-5 h-full">
-                <img src={member.avatar} alt={`Portrait of ${member.name}, ${member.role}`} className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex-shrink-0 object-cover border border-slate-200 shadow-xs" />
-                <div className="space-y-1 flex-grow">
+                <img src={member.avatar} alt={`Portrait of ${member.name}, ${member.role}`} className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl shrink-0 object-cover border border-slate-200 shadow-xs" />
+                <div className="space-y-1 grow">
                   <h3 className="font-heading font-bold text-base sm:text-lg text-slate-900">{member.name}</h3>
                   <p className="text-xs font-bold text-[#FA4517] leading-snug">{member.role}</p>
                   <p className="text-xs text-slate-600 leading-relaxed">{member.bio}</p>

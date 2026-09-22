@@ -89,7 +89,7 @@ const PaperPill: React.FC<PaperPillProps> = ({ name, idx, containerRef }) => {
         cursor: 'grabbing', 
         boxShadow: '0 18px 36px -6px rgba(250, 69, 23, 0.28)' 
       }}
-      className="px-5 py-2.5 rounded-full bg-white border border-slate-200 shadow-xs text-slate-800 text-xs font-bold cursor-grab select-none touch-none transition-colors active:border-[#FA4517] min-h-[44px] flex items-center justify-center pointer-events-auto"
+      className="px-5 py-2.5 rounded-full bg-white border border-slate-200 shadow-xs text-slate-800 text-xs font-bold cursor-grab select-none touch-none transition-colors active:border-[#FA4517] min-h-11 flex items-center justify-center pointer-events-auto"
     >
       <span>{name}</span>
     </motion.div>
@@ -128,7 +128,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenPlanner }) => {
               y: [0, -15, 0]
             }} 
             transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} 
-            className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-gradient-to-tr from-[#FA4517]/15 via-orange-400/10 to-transparent rounded-full blur-3xl" 
+            className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-87.5 sm:w-125 h-87.5 sm:h-125 bg-linear-to-tr from-[#FA4517]/15 via-orange-400/10 to-transparent rounded-full blur-3xl" 
           />
           <motion.div 
             animate={{ 
@@ -138,7 +138,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenPlanner }) => {
             transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }} 
             className="absolute top-1/4 right-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl" 
           />
-          <div className="absolute inset-0 bg-[radial-gradient(#E2E8F0_1px,transparent_1px)] [background-size:32px_32px] opacity-40" />
+          <div className="absolute inset-0 bg-[radial-gradient(#E2E8F0_1px,transparent_1px)] bg-size-[32px_32px] opacity-40" />
         </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-8 sm:space-y-10">
@@ -403,8 +403,8 @@ export const Home: React.FC<HomeProps> = ({ onOpenPlanner }) => {
           {TEAM_MEMBERS.slice(0, 2).map((m) => (
             <StaggerChild key={m.id} className="h-full">
               <div className="card-clean rounded-3xl p-6 sm:p-7 flex items-center gap-4 sm:gap-5 h-full">
-                <img src={m.avatar} alt={`Portrait of ${m.name}, ${m.role}`} className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex-shrink-0 object-cover border border-slate-200 shadow-xs" />
-                <div className="space-y-1 flex-grow">
+                <img src={m.avatar} alt={`Portrait of ${m.name}, ${m.role}`} className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl shrink-0 object-cover border border-slate-200 shadow-xs" />
+                <div className="space-y-1 grow">
                   <h3 className="font-heading font-bold text-base sm:text-lg text-slate-900">{m.name}</h3>
                   <p className="text-xs font-bold text-[#FA4517] leading-snug">{m.role}</p>
                   <p className="text-xs text-slate-600 leading-relaxed font-medium">{m.bio}</p>

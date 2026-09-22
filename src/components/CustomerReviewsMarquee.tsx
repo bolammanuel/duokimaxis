@@ -85,8 +85,8 @@ export const CustomerReviewsMarquee: React.FC = () => {
         onMouseLeave={() => setIsPaused(false)}
       >
         {/* Soft edge blur gradient fades */}
-        <div className="absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-[#F8FAFC] to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute top-0 bottom-0 right-0 w-16 bg-gradient-to-l from-[#F8FAFC] to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute top-0 bottom-0 left-0 w-16 bg-linear-to-r from-[#F8FAFC] to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute top-0 bottom-0 right-0 w-16 bg-linear-to-l from-[#F8FAFC] to-transparent z-10 pointer-events-none"></div>
 
         {/* Marquee Track moving to the left */}
         <motion.div
@@ -102,7 +102,7 @@ export const CustomerReviewsMarquee: React.FC = () => {
           {marqueeReviews.map((item, idx) => (
             <div
               key={`${item.id}-${idx}`}
-              className="glass-card-light rounded-3xl p-6 sm:p-7 flex-shrink-0 w-[320px] sm:w-[380px] border border-slate-200/80 shadow-sm hover:shadow-md transition-all duration-300 space-y-4 flex flex-col justify-between group"
+              className="glass-card-light rounded-3xl p-6 sm:p-7 shrink-0 w-[320px] sm:w-95 border border-slate-200/80 shadow-sm hover:shadow-md transition-all duration-300 space-y-4 flex flex-col justify-between group"
             >
               {/* Rating & Quote Icon */}
               <div className="flex items-center justify-between">

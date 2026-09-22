@@ -51,7 +51,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenPlanner, limit }) 
                   aria-expanded={isOpen}
                   aria-controls={accordionId}
                   onClick={() => toggleAccordion(idx)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none hover:bg-slate-50 transition-colors min-h-[44px] cursor-pointer"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none hover:bg-slate-50 transition-colors min-h-11 cursor-pointer"
                 >
                   <span className="font-heading font-bold text-sm sm:text-base text-slate-900 leading-snug">
                     {faq.question}

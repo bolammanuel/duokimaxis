@@ -60,7 +60,7 @@ export const ProjectPlannerModal: React.FC<ProjectPlannerModalProps> = ({ isOpen
         aria-modal="true"
         aria-labelledby="planner-modal-title"
         tabIndex={-1}
-        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-[2rem] border border-slate-200/80 shadow-2xl p-6 sm:p-7 text-slate-900 cursor-default focus:outline-none"
+        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-4xl border border-slate-200/80 shadow-2xl p-6 sm:p-7 text-slate-900 cursor-default focus:outline-none"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -111,16 +111,16 @@ export const ProjectPlannerModal: React.FC<ProjectPlannerModalProps> = ({ isOpen
                       }`}
                     >
                       {/* Selection Radio Dot */}
-                      <div className={`w-4 h-4 rounded-full border mt-0.5 flex items-center justify-center flex-shrink-0 transition-colors ${
+                      <div className={`w-4 h-4 rounded-full border mt-0.5 flex items-center justify-center shrink-0 transition-colors ${
                         isSelected ? 'border-[#FA4517] bg-[#FA4517]' : 'border-slate-300 bg-white'
                       }`} aria-hidden="true">
                         {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
                       </div>
 
-                      <div className="flex-grow space-y-0.5">
+                      <div className="grow space-y-0.5">
                         <div className="flex items-center justify-between gap-2">
                           <h3 className="font-heading font-bold text-xs text-slate-900">{opt.name}</h3>
-                          <span className="text-[10px] font-mono font-bold text-[#FA4517] px-2 py-0.5 rounded-full bg-[#FA4517]/10 flex-shrink-0">
+                          <span className="text-[10px] font-mono font-bold text-[#FA4517] px-2 py-0.5 rounded-full bg-[#FA4517]/10 shrink-0">
                             {opt.timeframe}
                           </span>
                         </div>

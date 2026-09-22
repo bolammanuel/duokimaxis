@@ -35,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanner }) => {
         {/* Brand Logo */}
         <Link 
           to="/" 
-          className="flex items-center gap-3 px-4 py-2.5 rounded-full nav-clean transition-all group hover:shadow-md focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none min-h-[44px]"
+          className="flex items-center gap-3 px-4 py-2.5 rounded-full nav-clean transition-all group hover:shadow-md focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none min-h-11"
           aria-label="Duokim Axis homepage"
         >
           <div className="w-8 h-8 rounded-lg bg-[#0D1C23] flex items-center justify-center p-1 group-hover:scale-105 transition-transform" aria-hidden="true">
@@ -58,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanner }) => {
                 key={link.path}
                 to={link.path}
                 aria-current={isActive ? 'page' : undefined}
-                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none min-h-[36px] flex items-center ${
+                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none min-h-9 flex items-center ${
                   isActive
                     ? 'bg-slate-900 text-white shadow-xs'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -74,7 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanner }) => {
         <div className="flex items-center gap-2.5">
           <button
             onClick={onOpenPlanner}
-            className="hidden sm:flex px-5 py-2.5 rounded-full bg-[#FA4517] text-white text-xs font-bold hover:bg-[#e03a0f] transition-all items-center gap-1.5 shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none min-h-[44px] cursor-pointer"
+            className="hidden sm:flex px-5 py-2.5 rounded-full bg-[#FA4517] text-white text-xs font-bold hover:bg-[#e03a0f] transition-all items-center gap-1.5 shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none min-h-11 cursor-pointer"
             aria-label="Book a call to discuss your project"
           >
             <span>Book a Call</span>
@@ -84,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanner }) => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2.5 rounded-full nav-clean text-slate-700 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
+            className="md:hidden p-2.5 rounded-full nav-clean text-slate-700 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none min-h-11 min-w-11 flex items-center justify-center cursor-pointer"
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
@@ -117,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanner }) => {
                     to={link.path}
                     onClick={() => setMobileMenuOpen(false)}
                     aria-current={isActive ? 'page' : undefined}
-                    className={`px-4 py-3 rounded-xl text-xs font-semibold flex items-center transition-colors min-h-[44px] focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none ${
+                    className={`px-4 py-3 rounded-xl text-xs font-semibold flex items-center transition-colors min-h-11 focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none ${
                       isActive
                         ? 'bg-slate-900 text-white font-bold'
                         : 'text-slate-700 hover:bg-slate-100'
@@ -133,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanner }) => {
                   setMobileMenuOpen(false);
                   onOpenPlanner();
                 }}
-                className="mt-2 w-full py-3 rounded-xl bg-[#FA4517] text-white text-xs font-bold hover:bg-[#e03a0f] transition-all flex items-center justify-center gap-1.5 shadow-sm min-h-[44px] cursor-pointer"
+                className="mt-2 w-full py-3 rounded-xl bg-[#FA4517] text-white text-xs font-bold hover:bg-[#e03a0f] transition-all flex items-center justify-center gap-1.5 shadow-sm min-h-11 cursor-pointer"
               >
                 <span>Book a Call</span>
                 <ArrowUpRight className="w-4 h-4" aria-hidden="true" />

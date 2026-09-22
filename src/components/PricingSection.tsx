@@ -49,7 +49,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenPlanner })
                       )}
                     </div>
                     <h3 className="font-heading font-bold text-xl text-white">{tier.name}</h3>
-                    <p className="text-xs text-slate-400 leading-normal min-h-[36px]">{tier.tagline}</p>
+                    <p className="text-xs text-slate-400 leading-normal min-h-9">{tier.tagline}</p>
                   </div>
 
                   {/* Timeframe & Engagement Model (Bright White Text) */}

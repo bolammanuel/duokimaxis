@@ -12,7 +12,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPlanner }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12 w-full min-w-0">
         
         {/* Top Banner CTA Card */}
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-[#0D1C23] to-slate-900 border border-slate-800 p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl w-full">
+        <div className="relative overflow-hidden rounded-2xl bg-linear-to-r from-slate-900 via-[#0D1C23] to-slate-900 border border-slate-800 p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl w-full">
           <div className="absolute top-0 right-0 -mt-8 -mr-8 w-48 h-48 bg-[#FA4517]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="space-y-2 text-center md:text-left z-10 min-w-0 max-w-full">
             <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-white tracking-tight">
