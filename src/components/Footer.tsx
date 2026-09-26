@@ -68,14 +68,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPlanner }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span className="font-medium text-slate-300">Nigeria</span>
+                <span className="font-medium text-slate-300">
+                  Abuja, Nigeria <span className="text-slate-400 text-[11px] font-mono">(WAT / GMT+1)</span>
+                </span>
               </div>
               
-              <a href="mailto:duokimaxis@gmail.com" className="flex flex-row items-center gap-2.5 text-xs text-slate-300 hover:text-white transition-colors group min-w-0 max-w-full">
+              <a href="mailto:contact@duokimaxis.com" className="flex flex-row items-center gap-2.5 text-xs text-slate-300 hover:text-white transition-colors group min-w-0 max-w-full">
                 <svg className="w-4 h-4 text-[#FA4517] group-hover:text-white shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span className="font-medium truncate sm:break-normal min-w-0">duokimaxis@gmail.com</span>
+                <span className="font-medium truncate sm:break-normal min-w-0">contact@duokimaxis.com</span>
               </a>
             </div>
 
@@ -165,6 +167,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPlanner }) => {
               <li>
                 <Link to="/contact" className="hover:text-[#FA4517] transition-colors">Contact Us</Link>
               </li>
+              <li>
+                <Link to="/privacy" className="hover:text-[#FA4517] transition-colors">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link to="/terms" className="hover:text-[#FA4517] transition-colors">Terms of Service</Link>
+              </li>
             </ul>
           </div>
 
@@ -217,7 +225,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPlanner }) => {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
           <p>© {new Date().getFullYear()} Duokim Axis. All rights reserved.</p>
           
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6">
+            <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-slate-300 transition-colors">Terms & Conditions</Link>
             <span className="text-slate-400 font-mono text-[11px]">
               Align. Amplify. Refine.
             </span>

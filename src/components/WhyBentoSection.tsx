@@ -45,11 +45,16 @@ export const WhyBentoSection: React.FC<WhyBentoSectionProps> = ({ onOpenPlanner 
         >
           {/* Inner Image Container */}
           <div className="rounded-[2rem] overflow-hidden aspect-[4/3] bg-white shadow-inner">
-            <img
-              src="/assets/bento/craftsmanship.png"
-              alt="Craftsmanship & Strategy"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-            />
+            <picture>
+              <source srcSet="/assets/bento/craftsmanship.webp" type="image/webp" />
+              <img
+                src="/assets/bento/craftsmanship.png"
+                alt="Craftsmanship & Strategy"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+              />
+            </picture>
           </div>
 
           {/* Heading Statement */}
@@ -87,11 +92,16 @@ export const WhyBentoSection: React.FC<WhyBentoSectionProps> = ({ onOpenPlanner 
             >
               {/* Inner Image Container */}
               <div className="rounded-[1.8rem] overflow-hidden aspect-[16/9] bg-white shadow-inner">
-                <img
-                  src="/assets/bento/collaboration.png"
-                  alt="Trusted Partnership"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                />
+                <picture>
+                  <source srcSet="/assets/bento/collaboration.webp" type="image/webp" />
+                  <img
+                    src="/assets/bento/collaboration.png"
+                    alt="Trusted Partnership"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  />
+                </picture>
               </div>
 
               {/* Text */}
@@ -122,8 +132,10 @@ export const WhyBentoSection: React.FC<WhyBentoSectionProps> = ({ onOpenPlanner 
               <motion.img
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                src="/assets/bento/chess_king.png"
+                src="/assets/bento/chess_king.webp"
                 alt="Strategic Advantage"
+                loading="lazy"
+                decoding="async"
                 className="w-28 sm:w-32 h-auto object-contain absolute right-[-8px] bottom-[-8px] drop-shadow-xl pointer-events-none group-hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
@@ -146,11 +158,16 @@ export const WhyBentoSection: React.FC<WhyBentoSectionProps> = ({ onOpenPlanner 
 
             {/* Image on Right */}
             <div className="sm:col-span-5 h-full relative flex items-end justify-end">
-              <img
-                src="/assets/bento/visionary.png"
-                alt="Elevate Personal Style & Brand"
-                className="w-full h-56 sm:h-full object-cover object-top rounded-b-[2.5rem] sm:rounded-b-none sm:rounded-r-[2.5rem] group-hover:scale-105 transition-transform duration-500 ease-out"
-              />
+              <picture>
+                <source srcSet="/assets/bento/visionary.webp" type="image/webp" />
+                <img
+                  src="/assets/bento/visionary.png"
+                  alt="Elevate Personal Style & Brand"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-56 sm:h-full object-cover object-top rounded-b-[2.5rem] sm:rounded-b-none sm:rounded-r-[2.5rem] group-hover:scale-105 transition-transform duration-500 ease-out"
+                />
+              </picture>
             </div>
           </motion.div>
 

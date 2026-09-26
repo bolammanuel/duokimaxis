@@ -4,6 +4,7 @@ import { PROJECTS_DATA } from '../data/content';
 import { SITE_COPY } from '../data/copy';
 import { ProjectModal } from '../components/ProjectModal';
 import { StaggerParent, StaggerChild } from '../components/AnimatedContainer';
+import { SEO } from '../components/SEO';
 import { Project } from '../types';
 import { ArrowRight } from 'lucide-react';
 
@@ -16,6 +17,10 @@ export const Work: React.FC<WorkProps> = ({ onOpenPlanner }) => {
 
   return (
     <div className="pt-32 pb-20 space-y-16 max-w-5xl mx-auto px-4 sm:px-6">
+      <SEO
+        title="Selected Work & Case Studies"
+        description="Explore selected engineering case studies, web applications, and brand strategy portfolios delivered by Duokim Axis."
+      />
       
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto space-y-3">

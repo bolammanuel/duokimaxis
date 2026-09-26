@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SERVICES_DATA } from '../data/content';
 import { SITE_COPY } from '../data/copy';
 import { AnimatedContainer, StaggerParent, StaggerChild } from '../components/AnimatedContainer';
+import { SEO } from '../components/SEO';
 import { ArrowUpRight, ChevronRight, CheckCircle2 } from 'lucide-react';
 
 interface ServicesProps {
@@ -14,6 +15,10 @@ export const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
 
   return (
     <div className="pt-32 pb-24 space-y-24 sm:space-y-28 max-w-5xl mx-auto px-4 sm:px-6">
+      <SEO
+        title="Services & Solutions — Web Applications & Brand Strategy"
+        description="Explore Duokim Axis digital solutions: Brand Architecture, Custom Web Applications, 7-Dimension Diagnostic Audits, and Automated Growth Systems."
+      />
       
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -152,21 +157,6 @@ export const Services: React.FC<ServicesProps> = ({ onOpenPlanner }) => {
           );
         })}
       </StaggerParent>
-
-      {/* CTA */}
-      <AnimatedContainer delay={0.2} scale={true}>
-        <div className="p-8 rounded-3xl glass-card-light text-center space-y-3">
-          <h3 className="font-heading font-bold text-xl text-slate-900">Book a Consultation</h3>
-          <p className="text-xs text-slate-600">Let us help evaluate and execute the solutions your organization needs.</p>
-          <button
-            onClick={onOpenPlanner}
-            className="px-6 py-3 rounded-full bg-[#FA4517] text-white text-xs font-bold hover:bg-[#FF6B35] hover:scale-105 active:scale-95 transition-all inline-flex items-center gap-1.5 shadow-md shadow-[#FA4517]/20"
-          >
-            <span>Book a Call</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </button>
-        </div>
-      </AnimatedContainer>
 
     </div>
   );

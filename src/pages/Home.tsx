@@ -11,6 +11,7 @@ import { WhyBentoSection } from '../components/WhyBentoSection';
 import { ProjectShowcaseGrid } from '../components/ProjectShowcaseGrid';
 import { CustomerReviewsMarquee } from '../components/CustomerReviewsMarquee';
 import { AnimatedContainer, StaggerParent, StaggerChild } from '../components/AnimatedContainer';
+import { SEO } from '../components/SEO';
 import { Project } from '../types';
 import { 
   ArrowUpRight, ArrowRight, ChevronRight, Search, Code, Layers, Sparkles, RotateCcw
@@ -115,6 +116,10 @@ export const Home: React.FC<HomeProps> = ({ onOpenPlanner }) => {
 
   return (
     <div className="space-y-24 sm:space-y-28 pb-24">
+      <SEO
+        title="Duokim Axis — Strategic Creative Technology & Digital Engineering"
+        description="Duokim Axis is a strategic creative technology & digital engineering firm. We turn complex organizational problems into practical, measurable growth through custom web applications, brand architecture, and intelligent workflow automation."
+      />
       
       {/* 🚀 HERO SECTION */}
       <section ref={heroRef} aria-labelledby="hero-heading" className="relative pt-36 sm:pt-44 pb-16 px-4 sm:px-6 overflow-hidden">
@@ -417,24 +422,6 @@ export const Home: React.FC<HomeProps> = ({ onOpenPlanner }) => {
 
       {/* ❓ FAQ SECTION (Bumpa Inspired - Limited to top 3 for Homepage) */}
       <FaqSection limit={3} onOpenPlanner={onOpenPlanner} />
-
-      {/* 🚀 CALL TO ACTION */}
-      <section aria-labelledby="cta-heading" className="max-w-6xl mx-auto px-4 sm:px-6">
-        <AnimatedContainer delay={0.2} scale={true}>
-          <div className="p-8 sm:p-12 rounded-3xl bg-slate-900 text-white text-center space-y-4 shadow-sm">
-            <h2 id="cta-heading" className="font-heading font-extrabold text-2xl sm:text-3xl text-white">Schedule Your Organizational Assessment</h2>
-            <p className="text-xs text-slate-300 max-w-lg mx-auto leading-relaxed">Identify operational friction and receive a 7-Dimension diagnostic roadmap for your business.</p>
-            <button
-              onClick={onOpenPlanner}
-              className="group px-7 py-3.5 rounded-full bg-[#FA4517] text-white text-xs font-bold hover:bg-[#FF6B35] transition-all inline-flex items-center gap-1.5 shadow-md shadow-[#FA4517]/25 focus-visible:ring-2 focus-visible:ring-white focus:outline-none"
-              aria-label="Book a diagnostic consultation"
-            >
-              <span>Book a Diagnostic Consultation</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" aria-hidden="true" />
-            </button>
-          </div>
-        </AnimatedContainer>
-      </section>
 
       {/* Case Study Modal */}
       <ProjectModal

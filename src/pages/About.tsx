@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { SITE_COPY } from '../data/copy';
 import { TEAM_MEMBERS } from '../data/content';
 import { AnimatedContainer, StaggerParent, StaggerChild } from '../components/AnimatedContainer';
+import { SEO } from '../components/SEO';
 import { ArrowUpRight } from 'lucide-react';
 
 interface AboutProps {
@@ -12,6 +13,10 @@ interface AboutProps {
 export const About: React.FC<AboutProps> = ({ onOpenPlanner }) => {
   return (
     <div className="pt-32 pb-24 space-y-24 sm:space-y-28 max-w-5xl mx-auto px-4 sm:px-6">
+      <SEO
+        title="About Us — Strategic Technology & Brand Architecture"
+        description="Learn about Duokim Axis, our strategic philosophy, diagnostic auditing framework, and engineering team delivering custom web applications and brand infrastructure."
+      />
       
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -128,22 +133,6 @@ export const About: React.FC<AboutProps> = ({ onOpenPlanner }) => {
           ))}
         </StaggerParent>
       </div>
-
-      {/* CTA */}
-      <AnimatedContainer delay={0.2} scale={true}>
-        <div className="p-8 sm:p-10 rounded-3xl bg-slate-900 text-white text-center space-y-4 shadow-sm">
-          <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-white">Schedule Your Diagnostic Audit</h3>
-          <p className="text-xs text-slate-300 max-w-md mx-auto">Discover what is holding your business back and map your implementation steps.</p>
-          <button
-            onClick={onOpenPlanner}
-            className="group px-6 py-3 rounded-full bg-[#FA4517] text-white text-xs font-bold hover:bg-[#FF6B35] transition-all inline-flex items-center gap-1.5 shadow-md shadow-[#FA4517]/20 focus-visible:ring-2 focus-visible:ring-white focus:outline-none"
-            aria-label="Book a call to schedule a diagnostic audit"
-          >
-            <span>Book a Call</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" aria-hidden="true" />
-          </button>
-        </div>
-      </AnimatedContainer>
 
     </div>
   );

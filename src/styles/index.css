@@ -96,6 +96,25 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   }
 }
 
+/* Universal Hand / Pointer Cursor for Interactive Controls */
+button, 
+a, 
+select, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"], 
+input[type="checkbox"], 
+input[type="radio"], 
+[role="button"], 
+[role="link"], 
+[role="tab"], 
+[role="checkbox"], 
+[role="radio"], 
+[role="option"] {
+  cursor: pointer !important;
+}
+
+
 /* Green Accent Text Highlight (Bumpa Inspired) */
 .text-green-accent {
   color: #059669;

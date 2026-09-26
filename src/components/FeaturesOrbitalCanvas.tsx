@@ -56,7 +56,7 @@ export const FeaturesOrbitalCanvas: React.FC<FeaturesOrbitalCanvasProps> = ({ on
 
           {/* Central Floating Headline Box */}
           <div className="max-w-xl mx-auto text-center relative z-20 space-y-6">
-            <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-[11px] font-mono font-bold tracking-wider shadow-xs">
+            <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white text-slate-800 border border-slate-200/90 text-[11px] font-mono font-bold tracking-wider shadow-xs">
               <span>Align. Amplify. Refine.</span>
             </div>
 
