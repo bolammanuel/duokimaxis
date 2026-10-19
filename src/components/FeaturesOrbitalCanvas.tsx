@@ -14,7 +14,7 @@ interface FeatureBadge {
 }
 
 interface FeaturesOrbitalCanvasProps {
-  onOpenPlanner: () => void;
+  onOpenPlanner?: () => void;
 }
 
 export const FeaturesOrbitalCanvas: React.FC<FeaturesOrbitalCanvasProps> = ({ onOpenPlanner }) => {
@@ -72,13 +72,7 @@ export const FeaturesOrbitalCanvas: React.FC<FeaturesOrbitalCanvasProps> = ({ on
               Diagnose root problems, align strategic messaging, and engineer custom digital platforms tailored to your team.
             </p>
 
-            <button
-              onClick={onOpenPlanner}
-              className="px-8 py-4 rounded-full bg-[#FA4517] text-white text-xs font-bold hover:bg-[#FF6B35] transition-all inline-flex items-center gap-2 shadow-md shadow-[#FA4517]/20 focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none"
-              aria-label="Book a call to get started with Duokim Axis"
-            >
-              <span>Get Started</span>
-            </button>
+
           </div>
 
         </div>

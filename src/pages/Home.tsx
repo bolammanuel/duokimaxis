@@ -4,12 +4,10 @@ import { motion, AnimatePresence, useAnimationControls } from 'framer-motion';
 import { SITE_COPY } from '../data/copy';
 import { SERVICES_DATA, TEAM_MEMBERS } from '../data/content';
 import { FeaturesOrbitalCanvas } from '../components/FeaturesOrbitalCanvas';
-import { PricingSection } from '../components/PricingSection';
 import { FaqSection } from '../components/FaqSection';
 import { ProjectModal } from '../components/ProjectModal';
 import { WhyBentoSection } from '../components/WhyBentoSection';
 import { ProjectShowcaseGrid } from '../components/ProjectShowcaseGrid';
-import { CustomerReviewsMarquee } from '../components/CustomerReviewsMarquee';
 import { AnimatedContainer, StaggerParent, StaggerChild } from '../components/AnimatedContainer';
 import { SEO } from '../components/SEO';
 import { Project } from '../types';
@@ -390,12 +388,6 @@ export const Home: React.FC<HomeProps> = ({ onOpenPlanner }) => {
 
       {/* 📁 PROVEN CASE STUDIES SHOWCASE */}
       <ProjectShowcaseGrid onSelectProject={(project) => setSelectedProject(project)} />
-
-      {/* 🏷️ PRICING SECTION (Bumpa Inspired) */}
-      <PricingSection onOpenPlanner={onOpenPlanner} />
-
-      {/* 💬 CUSTOMER REVIEWS INFINITE MARQUEE */}
-      <CustomerReviewsMarquee />
 
       {/* 👥 FOUNDING LEADERSHIP */}
       <section aria-labelledby="team-heading" className="max-w-6xl mx-auto px-4 sm:px-6 space-y-6">
