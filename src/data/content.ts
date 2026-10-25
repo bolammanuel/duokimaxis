@@ -1,183 +1,224 @@
-import { Project, ServiceItem, TeamMember, Article, LabExperiment, ScopeOption } from '../types';
-
-export const SERVICES_DATA: ServiceItem[] = [
-  {
-    id: 'diagnostic-evaluation',
-    number: '01',
-    title: 'Diagnostic & Assessment Audit',
-    badge: 'Diagnostic',
-    shortDesc: 'Identifying operational friction across positioning, digital systems, and customer experience.',
-    fullDesc: 'We evaluate your organization across 7 core dimensions to deliver a clear Problem Map, Diagnosis, and Implementation Plan.',
-    capabilities: ['7-Dimension Audit', 'Problem Map', 'Implementation Roadmap', 'Executive Briefing'],
-    deliverables: ['Diagnostic Report', 'Problem Map', 'Execution Roadmap'],
-    techTags: ['Audit Matrix', 'Growth Analytics'],
-    iconName: 'Search',
-    previewImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'implementation-projects',
-    number: '02',
-    title: 'Digital Systems & Development',
-    badge: 'Implementation',
-    shortDesc: 'Building custom web applications, digital transformation tools, and communication systems.',
-    fullDesc: 'Executing recommended solutions to build high-performance digital reality tailored to your business goals.',
-    capabilities: ['Web Application Development', 'Brand Systems', 'System Automation', 'Digital Tools'],
-    deliverables: ['Production Web App', 'Brand Guidelines', 'Documentation'],
-    techTags: ['React', 'TypeScript', 'Tailwind CSS'],
-    iconName: 'Code',
-    previewImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'brand-communication',
-    number: '03',
-    title: 'Brand Strategy & Positioning',
-    badge: 'Strategy',
-    shortDesc: 'Transforming complex business propositions into clear, credible, and scalable brand systems.',
-    fullDesc: 'Building complete brand strategy, visual architecture, positioning, and target audience engagement.',
-    capabilities: ['Brand Positioning', 'Visual Identity', 'Audience Strategy', 'Brand Architecture'],
-    deliverables: ['Brand Architecture', 'Visual Identity System', 'Communications Guide'],
-    techTags: ['Brand System', 'Visual Identity'],
-    iconName: 'Layers',
-    previewImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'retainer-services',
-    number: '04',
-    title: 'Strategic Advisory & Retainers',
-    badge: 'Retainer',
-    shortDesc: 'Ongoing strategic advisory, digital management, and continuous optimization.',
-    fullDesc: 'Long-term partnership to measure outcomes, optimize digital channels, and support growth.',
-    capabilities: ['Strategic Advisory', 'Channel Management', 'Performance Measurement', 'Continuous Updates'],
-    deliverables: ['Executive Reviews', 'Platform Management'],
-    techTags: ['Advisory', 'Optimization'],
-    iconName: 'TrendingUp',
-    previewImage: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80'
-  }
-];
+import type { Project, Service, TeamMember } from '../types';
 
 export const PROJECTS_DATA: Project[] = [
   {
     id: 'multilingual-ai-learning-platform',
-    title: 'Multilingual Learning Platform',
-    subtitle: 'AI-Powered Telegram Learning in 5 Languages',
-    category: 'Creative Tech',
-    client: 'GBV-Prevention Programme',
+    title: 'Learning, in a language that feels like home.',
+    shortTitle: 'Multilingual learning platform',
+    category: 'Digital product · AI & automation',
+    client: 'GBV-prevention programme',
     year: '2026',
-    image: '/assets/projects/multilingual_dashboard.png',
-    featured: true,
-    metrics: [
-      { label: 'Languages', value: '5 Nigerian Languages' },
-      { label: 'Platform', value: 'Telegram AI' }
+    theme: 'learning',
+    image: '/assets/projects/multilingual_dashboard.webp',
+    imageAlt:
+      'The learning dashboard showing module progression, language choices, and participant demographics.',
+    summary:
+      'A Telegram learning experience with voice interaction, five language options, and automated certificates.',
+    challenge:
+      'An English-only web portal made it harder for participants to access learning materials. The programme needed a way to make that content available across different languages.',
+    approach:
+      'We brought the learning experience into Telegram and combined speech recognition, text-to-speech, and automated certification in one workflow.',
+    delivered: [
+      'Telegram learning platform',
+      'Voice interaction in five languages',
+      'Speech recognition & text-to-speech',
+      'Automated certificate generation',
     ],
-    description: 'A multilingual learning platform on Telegram combining voice interaction in 5 Nigerian languages, speech recognition, and automated certificate generation.',
-    challenge: 'Participants faced language barriers on English-only web portals.',
-    solution: 'Built an accessible Telegram platform with voice interaction and automated certification.',
-    techStack: ['Telegram API', 'Python', 'Speech-to-Text', 'TTS']
+    details: [
+      {
+        title: 'Language as a starting point',
+        text: 'Voice interaction and multiple language options let the learning experience respond to the participant, rather than relying on an English-only interface.',
+      },
+      {
+        title: 'A connected learning workflow',
+        text: 'Learning content and automated certification sit within the Telegram experience. The accompanying dashboard brings module progression and participant information into view.',
+      },
+    ],
+    disciplines: [
+      'Product development',
+      'Python',
+      'Telegram API',
+      'Speech-to-text',
+      'Text-to-speech',
+    ],
   },
   {
     id: 'anic-brand-architecture',
-    title: 'ANIC Brand System',
-    subtitle: 'From Complexity to Clarity',
-    category: 'Brand Systems',
-    client: 'ANIC Ecosystem',
+    title: 'One clear story. Three connected brands.',
+    shortTitle: 'ANIC brand system',
+    category: 'Brand strategy · Visual identity',
+    client: 'ANIC ecosystem',
     year: '2025',
-    image: '/assets/projects/anic_showcase.png',
-    featured: true,
-    metrics: [
-      { label: 'Architecture', value: '3 Sub-Brands' },
-      { label: 'Reach', value: 'Complete Identity' }
+    theme: 'brand',
+    image: '/assets/projects/anic_showcase.webp',
+    imageAlt:
+      'The ANIC brand presentation, including positioning, visual direction, and brand architecture.',
+    summary:
+      'A shared strategy and visual identity for a business working across AI, cybersecurity, and education.',
+    challenge:
+      'ANIC brought together several technology and education offerings. The challenge was to make those different parts understandable as one business, while giving each a clear role.',
+    approach:
+      'We developed the positioning, audience strategy, brand architecture, and visual identity around three connected offers: ANIC Learn, ANIC Pro, and ANIC Solutions.',
+    delivered: [
+      'Brand positioning & audience strategy',
+      'Architecture for three sub-brands',
+      'Visual identity, typography & colour',
+      'Brand applications & communication direction',
     ],
-    description: 'Transforming a complex business proposition across AI, cybersecurity, and edtech into a clear brand system (ANIC Learn, ANIC Pro & ANIC Solutions).',
-    challenge: 'Unifying complex diverse offerings under one credible identity.',
-    solution: 'Developed complete brand strategy, visual identity, and brand architecture.',
-    techStack: ['Brand Strategy', 'Visual Identity', 'Architecture']
-  }
+    details: [
+      {
+        title: 'Structure before styling',
+        text: 'Defining the relationship between ANIC Learn, ANIC Pro, and ANIC Solutions gave the brand a clear foundation for explaining its different offerings.',
+      },
+      {
+        title: 'An identity with a shared language',
+        text: 'Typography, colour, visual identity, and communication direction work together as a system that can be applied across the business.',
+      },
+    ],
+    disciplines: [
+      'Research & positioning',
+      'Brand architecture',
+      'Visual identity',
+      'Communication strategy',
+    ],
+  },
+];
+
+export const SERVICES_DATA: Service[] = [
+  {
+    id: 'brand-strategy',
+    number: '01',
+    title: 'Make the brand clear.',
+    summary: 'Strategy, identity & communication',
+    description:
+      'We help you explain what your organisation does, who it is for, and why it matters. Then we give that thinking a visual and verbal identity people can recognise.',
+    deliverables: [
+      'Research & positioning',
+      'Brand architecture',
+      'Visual identity systems',
+      'Content & communication direction',
+    ],
+    question: 'Your offer has grown, but your brand no longer tells the whole story.',
+  },
+  {
+    id: 'digital-products',
+    number: '02',
+    title: 'Build something useful.',
+    summary: 'Websites, applications & digital tools',
+    description:
+      'From a website to a custom learning platform, we design and build around the people who will use it. Strategy, interface, and development stay connected throughout.',
+    deliverables: [
+      'Website design & development',
+      'Custom web applications',
+      'User experience & interface design',
+      'Product documentation & handover',
+    ],
+    question: 'You need a digital experience that does more than look the part.',
+  },
+  {
+    id: 'automation',
+    number: '03',
+    title: 'Make the work flow.',
+    summary: 'Automation, AI & connected systems',
+    description:
+      'We look at the work your team repeats, then build practical tools and connections to support it. That might mean an integration, a voice interface, or an automated workflow.',
+    deliverables: [
+      'Workflow mapping & automation',
+      'API & platform integrations',
+      'AI-assisted tools',
+      'Ongoing technical support',
+    ],
+    question: 'Your team spends too much time working around disconnected tools.',
+  },
+];
+
+export const ASSESSMENT_AREAS = [
+  ['Positioning', 'What you offer and how clearly people understand it.'],
+  ['Brand & communication', 'How your identity and messaging work together.'],
+  ['Audience', 'The people you serve and what they need.'],
+  ['Digital presence', 'How your websites and platforms support your goals.'],
+  ['Customer experience', 'What it feels like to move through your service.'],
+  ['Systems & operations', 'The processes behind the day-to-day work.'],
+  ['Technology', 'The tools, connections, and infrastructure you rely on.'],
+] as const;
+
+export const PROCESS_STEPS = [
+  {
+    number: '01',
+    title: 'Understand the problem.',
+    text: 'We ask questions, look at what already exists, and agree on what needs to change.',
+  },
+  {
+    number: '02',
+    title: 'Give it a direction.',
+    text: 'We turn what we learn into a clear scope, a shared direction, and a practical plan.',
+  },
+  {
+    number: '03',
+    title: 'Make it work.',
+    text: 'We design, build, and refine the solution with you, then help your team take it forward.',
+  },
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 'gideon',
     name: 'Gideon',
-    role: 'Strategic Creative Architect / Insight & Research Strategist',
-    bio: 'Leads research, discovery, problem diagnosis, and strategic brand architecture.',
-    avatar: '/assets/team/Gideon.avif',
-    expertise: ['Insight & Research', 'Brand Strategy', 'Creative Architecture']
+    role: 'Strategy & research',
+    bio: 'Leads discovery, research, problem diagnosis, and brand strategy. Connects the brief to a clear direction for the work.',
+    avatar: '/assets/team/Gideon.webp',
   },
   {
     id: 'emmanuel',
     name: 'Emmanuel',
-    role: 'IT Support / Creative Technology Engineer',
-    bio: 'Digital products, websites, technology, AI, automation, and intelligent workflows.',
-    avatar: '/assets/team/Emmanuel.avif',
-    expertise: ['Digital Products', 'Websites & Tech', 'AI & Automation']
+    role: 'Technology & development',
+    bio: 'Builds websites, digital products, automation, and AI workflows. Turns the team’s ideas into working tools.',
+    avatar: '/assets/team/Emmanuel.webp',
   },
   {
     id: 'anu',
     name: 'Anuoluwapo',
-    role: 'Digital Communications Strategist',
-    bio: 'Content, social media strategy, and community engagement.',
-    avatar: '/assets/team/Anu.avif',
-    expertise: ['Communications', 'Content Strategy', 'Community']
+    role: 'Communications & content',
+    bio: 'Works across content, social strategy, and community engagement to help organisations communicate with their audiences.',
+    avatar: '/assets/team/Anu.webp',
   },
   {
     id: 'marvellous',
     name: 'Marvellous',
-    role: 'Motion Architecture Lead',
-    bio: 'Designs movement, interaction, and visual systems that make experiences engaging.',
-    avatar: '/assets/team/Marvellous.avif',
-    expertise: ['Motion Architecture', 'Interaction Design', 'Visual Systems']
-  }
+    role: 'Motion & interaction',
+    bio: 'Brings visual systems to life through motion and interaction, with attention to how an experience feels to use.',
+    avatar: '/assets/team/Marvellous.webp',
+  },
 ];
 
-export const ARTICLES_DATA: Article[] = [
-  {
-    id: 'why-problem-first-matters',
-    title: 'Why Logos Don\'t Fix Broken Business Systems',
-    readTime: '4 min read',
-    category: 'Strategy',
-    date: '2026',
-    summary: 'Why a problem-first diagnostic approach is essential before spending budget on creative work.',
-    content: 'Article content...',
-    author: 'Gideon',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80'
-  }
+export const INQUIRY_OPTIONS = [
+  { id: 'not-sure', name: 'Let’s work it out together' },
+  { id: 'brand-strategy', name: 'Brand strategy & identity' },
+  { id: 'digital-products', name: 'A website or digital product' },
+  { id: 'automation', name: 'Automation & connected systems' },
+  { id: 'diagnostic', name: 'A diagnostic assessment' },
+  { id: 'ongoing-support', name: 'An ongoing partnership' },
 ];
 
-export const LAB_EXPERIMENTS: LabExperiment[] = [
+export const FAQS = [
   {
-    id: 'diagnostic-matrix-demo',
-    title: 'Interactive Diagnostic Audit',
-    type: 'Assessment Engine',
-    description: 'Evaluate your organization across 7 core dimensions.',
-    interactiveType: 'roi',
-    tags: ['7 Dimensions', 'Problem Map'],
-    badge: 'Diagnostic Tool'
-  }
-];
-
-export const SCOPE_OPTIONS: ScopeOption[] = [
-  {
-    id: 'diagnostic-audit',
-    name: 'Diagnostic Audit Assessment',
-    timeframe: '1-2 Weeks',
-    description: '7-dimension audit delivering a clear Problem Map and Execution Plan.'
+    question: 'Do I need a detailed brief to get started?',
+    answer:
+      'A description of the problem is a useful place to start. Tell us what your organisation does, what feels difficult, and what you would like to change. We can help define the scope from there.',
   },
   {
-    id: 'implementation-project',
-    name: 'Implementation Project',
-    timeframe: '4-6 Weeks',
-    description: 'End-to-end execution of strategy, web platforms, and brand systems.'
+    question: 'Can we work together on just one part of a project?',
+    answer:
+      'Yes. You can come to us for brand work, a website, a custom application, or automation. We agree the scope around what the project needs.',
   },
   {
-    id: 'retainer-advisory',
-    name: 'Monthly Retainer Services',
-    timeframe: 'Ongoing Monthly',
-    description: 'Continuous strategic advisory, digital management, and optimization.'
+    question: 'What does the diagnostic assessment involve?',
+    answer:
+      'We look across seven areas of your organisation, from positioning and customer experience to operations and technology. The output is a problem map and a practical implementation roadmap. The usual assessment window is one to two weeks, with the exact scope agreed beforehand.',
   },
   {
-    id: 'enterprise-custom',
-    name: 'Enterprise Transformation',
-    timeframe: 'Tailored Scope',
-    description: 'Multi-platform digital infrastructure and dedicated architecture team.'
-  }
+    question: 'Do you offer ongoing support?',
+    answer:
+      'We can agree an ongoing partnership for communications, platform updates, or technical improvements. The responsibilities, schedule, and support arrangements are set out in the project agreement.',
+  },
 ];

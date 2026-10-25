@@ -1,427 +1,163 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { ArrowDownRight, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, useAnimationControls } from 'framer-motion';
-import { SITE_COPY } from '../data/copy';
-import { SERVICES_DATA, TEAM_MEMBERS } from '../data/content';
-import { FeaturesOrbitalCanvas } from '../components/FeaturesOrbitalCanvas';
-import { FaqSection } from '../components/FaqSection';
-import { ProjectModal } from '../components/ProjectModal';
-import { WhyBentoSection } from '../components/WhyBentoSection';
+import { PROJECTS_DATA, SERVICES_DATA, PROCESS_STEPS } from '../data/content';
+import { ProjectVisual } from '../components/ProjectVisual';
 import { ProjectShowcaseGrid } from '../components/ProjectShowcaseGrid';
-import { AnimatedContainer, StaggerParent, StaggerChild } from '../components/AnimatedContainer';
-import { SEO } from '../components/SEO';
-import { Project } from '../types';
-import { 
-  ArrowUpRight, ArrowRight, ChevronRight, Search, Code, Layers, Sparkles, RotateCcw
-} from 'lucide-react';
+import { TeamGrid } from '../components/TeamGrid';
 
-interface HomeProps {
-  onOpenPlanner: () => void;
-}
-
-// Lightweight Paper Physics Pill Component
-interface PaperPillProps {
-  name: string;
-  idx: number;
-  containerRef: React.RefObject<HTMLDivElement | null>;
-}
-
-const PaperPill: React.FC<PaperPillProps> = ({ name, idx, containerRef }) => {
-  const controls = useAnimationControls();
-
-  useEffect(() => {
-    // Initial paper fall into place on load
-    controls.start({
-      opacity: 1,
-      y: 0,
-      x: 0,
-      rotate: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 65,
-        damping: 11,
-        mass: 0.5,
-        delay: 0.15 + idx * 0.07
-      }
-    });
-  }, [controls, idx]);
-
-  const handleDragEnd = (_: any, info: any) => {
-    // Determine flutter sway direction based on horizontal movement
-    const swingDirection = info.offset.x >= 0 ? 1 : -1;
-    
-    // Fluttering lightweight paper floating gently back down to baseline (x: 0, y: 0)
-    controls.start({
-      x: 0,
-      y: 0,
-      rotate: [swingDirection * 12, swingDirection * -6, 0],
-      transition: {
-        type: 'spring',
-        stiffness: 38,   // Floating paper spring
-        damping: 12,     // Air friction damping
-        mass: 0.35,      // Extremely light paper weight
-        bounce: 0.25
-      }
-    });
-  };
-
+export function Home() {
   return (
-    <motion.div
-      drag
-      dragConstraints={containerRef}
-      dragElastic={0.8}
-      dragMomentum={true}
-      dragTransition={{ power: 0.35, timeConstant: 300 }}
-      animate={controls}
-      initial={{ opacity: 0, y: -240, rotate: idx % 2 === 0 ? -12 : 12 }}
-      onDragEnd={handleDragEnd}
-      whileHover={{ 
-        scale: 1.06, 
-        rotate: idx % 2 === 0 ? 3 : -3,
-        borderColor: '#FA4517', 
-        color: '#FA4517' 
-      }}
-      whileDrag={{ 
-        scale: 1.12, 
-        rotate: idx % 2 === 0 ? [ -4, 6, -3 ] : [ 4, -6, 3 ],
-        zIndex: 60, 
-        cursor: 'grabbing', 
-        boxShadow: '0 18px 36px -6px rgba(250, 69, 23, 0.28)' 
-      }}
-      className="px-5 py-2.5 rounded-full bg-white border border-slate-200 shadow-xs text-slate-800 text-xs font-bold cursor-grab select-none touch-none transition-colors active:border-[#FA4517] min-h-11 flex items-center justify-center pointer-events-auto"
-    >
-      <span>{name}</span>
-    </motion.div>
-  );
-};
-
-export const Home: React.FC<HomeProps> = ({ onOpenPlanner }) => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [activeServiceId, setActiveServiceId] = useState<string>(SERVICES_DATA[0].id);
-  const [resetKey, setResetKey] = useState(0);
-  const heroRef = useRef<HTMLDivElement>(null);
-
-  // Animated Word Rotator State
-  const rotatorItems = SITE_COPY.hero.rotatorItems;
-  const [wordIndex, setWordIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % rotatorItems.length);
-    }, 3200);
-    return () => clearInterval(interval);
-  }, [rotatorItems.length]);
-
-  return (
-    <div className="space-y-24 sm:space-y-28 pb-24">
-      <SEO
-        title="Duokim Axis — Strategic Creative Technology & Digital Engineering"
-        description="Duokim Axis is a strategic creative technology & digital engineering firm. We turn complex organizational problems into practical, measurable growth through custom web applications, brand architecture, and intelligent workflow automation."
-      />
-      
-      {/* 🚀 HERO SECTION */}
-      <section ref={heroRef} aria-labelledby="hero-heading" className="relative pt-36 sm:pt-44 pb-16 px-4 sm:px-6 overflow-hidden">
-        
-        {/* Animated Background Glowing Orbs */}
-        <div aria-hidden="true" className="absolute inset-0 pointer-events-none overflow-hidden">
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.2, 1],
-              x: [0, 20, 0],
-              y: [0, -15, 0]
-            }} 
-            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} 
-            className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-87.5 sm:w-125 h-87.5 sm:h-125 bg-linear-to-tr from-[#FA4517]/15 via-orange-400/10 to-transparent rounded-full blur-3xl" 
-          />
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.15, 1],
-              x: [0, -25, 0]
-            }} 
-            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }} 
-            className="absolute top-1/4 right-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl" 
-          />
-          <div className="absolute inset-0 bg-[radial-gradient(#E2E8F0_1px,transparent_1px)] bg-size-[32px_32px] opacity-40" />
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-8 sm:space-y-10">
-          
-          {/* Eyebrow Badge (Dot removed as requested) */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-xs text-slate-800 text-xs font-bold"
-          >
-            <span>{SITE_COPY.hero.badge}</span>
-          </motion.div>
-
-          {/* Main Headline with Solid Brand Orange Animated Text Swap */}
-          <motion.h1
-            id="hero-heading"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.05 }}
-            className="font-heading font-black text-3xl sm:text-5xl md:text-6xl text-slate-900 leading-[1.15] tracking-tight"
-          >
-            {SITE_COPY.hero.titleMain} <br className="hidden sm:inline" />
-            <span className="relative inline-block min-h-[1.2em] text-[#FA4517]">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={wordIndex}
-                  initial={{ opacity: 0, y: 14, filter: 'blur(3px)' }}
-                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, y: -14, filter: 'blur(3px)' }}
-                  transition={{ duration: 0.4, ease: 'easeOut' }}
-                  className="inline-block text-[#FA4517] font-black"
-                >
-                  {rotatorItems[wordIndex]}
-                </motion.span>
-              </AnimatePresence>
-            </span>
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.1 }}
-            className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium"
-          >
-            {SITE_COPY.hero.subtitle}
-          </motion.p>
-
-          {/* Dual Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.15 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2"
-          >
-            <button
-              onClick={onOpenPlanner}
-              className="group w-full sm:w-auto px-8 py-4 rounded-full bg-[#FA4517] text-white font-heading font-bold text-xs hover:bg-[#FF6B35] transition-all flex items-center justify-center gap-2 shadow-md shadow-[#FA4517]/25 focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none cursor-pointer"
-              aria-label="Book a call with Duokim Axis"
-            >
-              <span>{SITE_COPY.hero.ctaPrimary}</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" aria-hidden="true" />
-            </button>
-
-            <Link
-              to="/contact"
-              className="group w-full sm:w-auto px-8 py-4 rounded-full bg-white text-slate-800 font-heading font-bold text-xs border border-slate-200 hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-xs focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none"
-              aria-label="Navigate to contact page"
-            >
-              <span>{SITE_COPY.hero.ctaSecondary}</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true" />
+    <>
+      <section className="hero container" aria-labelledby="home-heading">
+        <div className="hero-copy">
+          <p className="eyebrow">
+            <span className="small-cross" aria-hidden="true">
+              ✳
+            </span>{' '}
+            Strategy, design & useful technology
+          </p>
+          <h1 id="home-heading" tabIndex={-1}>
+            Clarity first.
+            <br />
+            <span>Then we build.</span>
+          </h1>
+          <p className="hero-description">
+            We turn complex business problems into clear brands, useful digital products, and better
+            ways of working.
+          </p>
+          <div className="hero-actions">
+            <Link to="/contact" className="button">
+              Discuss a project <ArrowUpRight size={20} aria-hidden="true" />
             </Link>
-          </motion.div>
-
-          {/* 🌊 KINETIC WATERFALL / LIGHTWEIGHT PAPER PHYSICS PILLS */}
-          <div className="pt-8 relative z-20">
-            <div key={resetKey} className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 max-w-3xl mx-auto px-2">
-              {[
-                { name: "Diagnostic Audit" },
-                { name: "Brand Architecture" },
-                { name: "Digital Systems" },
-                { name: "Workflow Automation" },
-                { name: "Customer Experience" },
-                { name: "Growth Analytics" },
-                { name: "Tech Infrastructure" }
-              ].map((pill, idx) => (
-                <PaperPill
-                  key={`${pill.name}-${resetKey}`}
-                  name={pill.name}
-                  idx={idx}
-                  containerRef={heroRef}
-                />
-              ))}
-            </div>
+            <a href="#selected-work" className="text-link">
+              Explore our work <ArrowDownRight size={21} aria-hidden="true" />
+            </a>
           </div>
-
+        </div>
+        <Link
+          to={`/work/${PROJECTS_DATA[1].id}`}
+          className="hero-project"
+          aria-label="Explore the ANIC brand system"
+        >
+          <div className="hero-project__label">
+            <span>A glimpse of our work</span>
+            <ArrowUpRight size={20} aria-hidden="true" />
+          </div>
+          <ProjectVisual project={PROJECTS_DATA[1]} priority />
+          <div className="hero-project__caption">
+            <span>From complexity to clarity.</span>
+            <span>ANIC brand system</span>
+          </div>
+          <span className="hero-project__index" aria-hidden="true">
+            01 — 02
+          </span>
+        </Link>
+      </section>
+      <section
+        id="selected-work"
+        className="container selected-work section-space"
+        aria-labelledby="work-heading"
+      >
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">01 / Selected work</p>
+            <h2 id="work-heading">
+              Different briefs.
+              <br />
+              Considered solutions.
+            </h2>
+          </div>
+          <Link to="/work" className="text-link">
+            A closer look <ArrowUpRight size={20} aria-hidden="true" />
+          </Link>
+        </div>
+        <ProjectShowcaseGrid />
+      </section>
+      <section className="services-overview section-space" aria-labelledby="services-heading">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">02 / What we do</p>
+              <h2 id="services-heading">
+                The thinking.
+                <br />
+                And the making.
+              </h2>
+            </div>
+            <p className="section-description">
+              We connect strategy, creative work, and technology around what your organisation
+              actually needs.
+            </p>
+          </div>
+          <div className="service-rows">
+            {SERVICES_DATA.map((service) => (
+              <Link key={service.id} to={`/services#${service.id}`} className="service-row">
+                <span className="service-number">{service.number}</span>
+                <div>
+                  <h3>{service.title}</h3>
+                  <span className="service-summary">{service.summary}</span>
+                </div>
+                <p>{service.description}</p>
+                <ArrowUpRight size={26} className="service-row__arrow" aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
-
-      {/* 🎨 CATEGORY CARDS SHOWCASE */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 space-y-8">
-        <AnimatedContainer delay={0.1} className="text-center max-w-xl mx-auto space-y-2">
-          <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900">Let Your Solution Do the Talking</h2>
-          <p className="text-xs text-slate-600">Targeted approaches to solve your specific organizational friction.</p>
-        </AnimatedContainer>
-
-        <StaggerParent staggerDelay={0.12} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          <StaggerChild className="h-full">
-            <div className="glass-card-light rounded-3xl p-7 space-y-4 flex flex-col justify-between h-full group">
-              <div className="space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-[#FA4517]/10 text-[#FA4517] flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Search className="w-6 h-6" />
-                </div>
-                <h3 className="font-heading font-bold text-xl text-slate-900 group-hover:text-[#FA4517] transition-colors">
-                  Diagnostic Audit
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Evaluating root operational friction across positioning, systems, and user experience.
-                </p>
-              </div>
-              <Link to="/services" className="text-xs font-bold text-[#FA4517] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Learn More</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </StaggerChild>
-
-          <StaggerChild className="h-full">
-            <div className="glass-card-light rounded-3xl p-7 space-y-4 flex flex-col justify-between h-full group">
-              <div className="space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-[#6D28D9]/10 text-[#6D28D9] flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Code className="w-6 h-6" />
-                </div>
-                <h3 className="font-heading font-bold text-xl text-slate-900 group-hover:text-[#6D28D9] transition-colors">
-                  Digital Systems
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Building custom web applications, learning platforms, and automated workflow tools.
-                </p>
-              </div>
-              <Link to="/services" className="text-xs font-bold text-[#6D28D9] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Learn More</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </StaggerChild>
-
-          <StaggerChild className="h-full">
-            <div className="glass-card-light rounded-3xl p-7 space-y-4 flex flex-col justify-between h-full group">
-              <div className="space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Layers className="w-6 h-6" />
-                </div>
-                <h3 className="font-heading font-bold text-xl text-slate-900 group-hover:text-blue-600 transition-colors">
-                  Brand Strategy
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Transforming complex propositions into clear, credible, and scalable brand systems.
-                </p>
-              </div>
-              <Link to="/services" className="text-xs font-bold text-blue-600 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Learn More</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </StaggerChild>
-
-        </StaggerParent>
-      </section>
-
-      {/* 🌐 ORBITAL FEATURES CANVAS (Bumpa Inspired) */}
-      <FeaturesOrbitalCanvas onOpenPlanner={onOpenPlanner} />
-
-      {/* 🌟 WHY DUOKIM AXIS BENTO SECTION */}
-      <WhyBentoSection onOpenPlanner={onOpenPlanner} />
-
-      {/* ⚙️ NUMBERED SERVICES LIST */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 space-y-6">
-        <AnimatedContainer delay={0.1} className="flex items-center justify-between">
+      <section
+        className="container process-section section-space"
+        aria-labelledby="process-heading"
+      >
+        <div className="section-heading">
           <div>
-            <h2 className="font-heading font-extrabold text-2xl text-slate-900">{SITE_COPY.services.title}</h2>
-            <p className="text-xs text-slate-600">{SITE_COPY.services.subtitle}</p>
+            <p className="eyebrow">03 / How we work</p>
+            <h2 id="process-heading">
+              Get to the root.
+              <br />
+              Then move forward.
+            </h2>
           </div>
-          <Link to="/services" className="group text-xs font-bold text-[#FA4517] hover:underline flex items-center gap-1 focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none">
-            <span>View All</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-          </Link>
-        </AnimatedContainer>
-
-        <StaggerParent staggerDelay={0.1} className="space-y-3">
-          {SERVICES_DATA.map((service) => {
-            const isSelected = activeServiceId === service.id;
-            return (
-              <StaggerChild key={service.id}>
-                <div
-                  onClick={() => setActiveServiceId(service.id)}
-                  tabIndex={0}
-                  role="button"
-                  aria-expanded={isSelected}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setActiveServiceId(service.id); }}
-                  className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#FA4517] focus:outline-none ${
-                    isSelected
-                      ? 'bg-white border border-slate-200 border-l-4 border-l-[#FA4517] shadow-xs'
-                      : 'card-clean'
-                  }`}
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      <span className="font-mono text-xl font-extrabold text-[#FA4517]">{service.number}</span>
-                      <div>
-                        <h3 className="font-heading font-bold text-lg text-slate-900">{service.title}</h3>
-                        <p className="text-xs text-slate-600">{service.shortDesc}</p>
-                      </div>
-                    </div>
-
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${isSelected ? 'bg-[#FA4517] text-white rotate-90' : 'bg-slate-100 text-slate-500'}`} aria-hidden="true">
-                      <ChevronRight className="w-4 h-4" />
-                    </div>
-                  </div>
-
-                  <AnimatePresence>
-                    {isSelected && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
-                        className="overflow-hidden"
-                      >
-                        <div className="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-600">
-                          <p>{service.fullDesc}</p>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </StaggerChild>
-            );
-          })}
-        </StaggerParent>
-      </section>
-
-      {/* 📁 PROVEN CASE STUDIES SHOWCASE */}
-      <ProjectShowcaseGrid onSelectProject={(project) => setSelectedProject(project)} />
-
-      {/* 👥 FOUNDING LEADERSHIP */}
-      <section aria-labelledby="team-heading" className="max-w-6xl mx-auto px-4 sm:px-6 space-y-6">
-        <AnimatedContainer delay={0.1} className="text-center max-w-xl mx-auto space-y-1">
-          <h2 id="team-heading" className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">Founding Leadership</h2>
-          <p className="text-xs sm:text-sm text-slate-600 font-medium">Experienced leadership driving strategy, creative direction, and digital engineering.</p>
-        </AnimatedContainer>
-
-        <StaggerParent staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto items-stretch">
-          {TEAM_MEMBERS.slice(0, 2).map((m) => (
-            <StaggerChild key={m.id} className="h-full">
-              <div className="card-clean rounded-3xl p-6 sm:p-7 flex items-center gap-4 sm:gap-5 h-full">
-                <img src={m.avatar} alt={`Portrait of ${m.name}, ${m.role}`} className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl shrink-0 object-cover border border-slate-200 shadow-xs" />
-                <div className="space-y-1 grow">
-                  <h3 className="font-heading font-bold text-base sm:text-lg text-slate-900">{m.name}</h3>
-                  <p className="text-xs font-bold text-[#FA4517] leading-snug">{m.role}</p>
-                  <p className="text-xs text-slate-600 leading-relaxed font-medium">{m.bio}</p>
-                </div>
-              </div>
-            </StaggerChild>
+          <p className="section-description">
+            The tools change. The starting point stays the same: understand the problem before
+            deciding what to make.
+          </p>
+        </div>
+        <ol className="process-grid">
+          {PROCESS_STEPS.map((step) => (
+            <li key={step.number}>
+              <span className="process-number">
+                {step.number}
+                <span aria-hidden="true">/</span>
+              </span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </li>
           ))}
-        </StaggerParent>
+        </ol>
       </section>
-
-      {/* ❓ FAQ SECTION (Bumpa Inspired - Limited to top 3 for Homepage) */}
-      <FaqSection limit={3} onOpenPlanner={onOpenPlanner} />
-
-      {/* Case Study Modal */}
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-        onOpenPlanner={onOpenPlanner}
-      />
-
-    </div>
+      <section className="studio-section section-space" aria-labelledby="studio-heading">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">04 / The people behind the work</p>
+              <h2 id="studio-heading">
+                Different minds.
+                <br />A shared direction.
+              </h2>
+            </div>
+            <div className="section-description">
+              <p>
+                Researchers, builders, communicators, and makers. We bring our different
+                perspectives to the same table.
+              </p>
+              <Link to="/about" className="text-link">
+                Meet the studio <ArrowRight size={20} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+          <TeamGrid compact />
+        </div>
+      </section>
+    </>
   );
-};
+}
