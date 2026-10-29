@@ -27,11 +27,26 @@ The included GitHub Actions workflow runs the build and tests on pushes and pull
 
 ## Contact inquiries
 
-The default contact flow prepares an email draft. Visitors review and send it through their own email application. The website does not announce delivery or redirect to a success page for a draft.
+Production builds use the public EmailJS settings in `.env.production` to send inquiries directly. Local development without EmailJS settings prepares an email draft instead. Visitors review and send drafts through their own email application; the website does not announce delivery or redirect to a success page for a draft.
 
-The inbox currently defaults to `duokimaxis@gmail.com`, carried over from the original website. Confirm it is monitored before publishing, or set `VITE_CONTACT_EMAIL` to the appropriate inbox in a local `.env.local` file. `.env.example` lists supported settings.
+The studio inbox is `duokimaxis@gmail.com`. `VITE_CONTACT_EMAIL` controls the visible contact links and email-draft fallback. Direct delivery's recipient is set in the EmailJS template; update that template as well if the inbox changes. `.env.example` lists supported settings.
 
-Direct delivery is optional. When a service is chosen, the existing EmailJS integration can be enabled with all three public settings:
+To enable direct delivery, connect the studio's Gmail account in the [EmailJS dashboard](https://dashboard.emailjs.com/). Under Email Services, add Gmail and connect `duokimaxis@gmail.com`. This step requires the inbox owner's Google sign-in. Copy the resulting Service ID.
+
+Create an email template with these fields:
+
+| Field | Value |
+| --- | --- |
+| To Email | `duokimaxis@gmail.com` |
+| From Name | `Duokim Axis website` |
+| From Email | Use the connected service's default address |
+| Reply-To | `{{reply_to}}` |
+| Subject | `Project inquiry: {{service}}` |
+| Content | Paste [docs/emailjs-template.html](docs/emailjs-template.html) into the template's HTML/code editor |
+
+The template uses the exact variables sent by the form: `from_name`, `reply_to`, `service`, and `message`. Keep the recipient fixed in the template. Save the template and copy its Template ID. Find the account's Public Key in the EmailJS account settings. See EmailJS's [service setup](https://www.emailjs.com/docs/tutorial/adding-email-service/) and [template setup](https://www.emailjs.com/docs/tutorial/creating-email-template/) instructions.
+
+The current site's three public identifiers are configured in `.env.production`, which Vite loads during production builds. Set the same values in `.env.local` to enable sending during local development. To use a different EmailJS account, update `.env.production` or override all three values in the production host's **build environment**:
 
 ```dotenv
 VITE_EMAILJS_SERVICE_ID=your_service_id
@@ -39,9 +54,11 @@ VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
-Configure the EmailJS template's recipient as your studio inbox, reply-to as `{{reply_to}}`, and use `{{from_name}}`, `{{service}}`, and `{{message}}` in its body. Configure the provider's allowed origins and delivery limits for your real domain. No private keys belong in a `VITE_` variable or in this repository.
+These values are embedded by Vite at build time. Rebuild and redeploy after setting them; changing runtime environment variables alone does not update a static deployment. Configure the provider's allowed origins and delivery limits for `https://duokimaxis.com`. No private keys belong in a `VITE_` variable or in this repository.
 
-With direct delivery enabled, success is shown only after the provider accepts the request. Errors preserve the visitor's details and offer the email draft alternative. Unit tests cover configuration, validation, encoding, successful acknowledgement, and rejection. Live provider delivery has not been tested because no service is connected.
+After deployment, check that `/contact` offers **Send your inquiry**, submit a clearly labelled test inquiry, and verify both the confirmation page and receipt in `duokimaxis@gmail.com`. Replying to the delivered message should address the visitor's email. An accepted provider response confirms acceptance for delivery, while the inbox check confirms receipt.
+
+With direct delivery enabled, success is shown only after the provider accepts the request. Errors preserve the visitor's details and offer the email draft alternative. Unit tests cover configuration, validation, encoding, successful acknowledgement, and rejection. Provider acceptance and inbox receipt still need to be verified after deploying the configured build.
 
 ## Analytics
 
